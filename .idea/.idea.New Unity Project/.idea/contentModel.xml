@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Sergeev Viktor\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Sergeev Viktor\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_New Unity Project.47133793.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Sergeev Viktor\New Unity Project" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="HealthHeartSystem" t="Include">
+          <e p="readme.txt" t="Include" />
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Audio" t="Include">
+            <e p="AudioTester.cs" t="Include" />
+            <e p="MixerTest.cs" t="Include" />
+          </e>
+          <e p="Effects" t="Include">
+            <e p="ActivateProjectile.cs" t="Include" />
+            <e p="BulletHit.cs" t="Include" />
+            <e p="CarriageOscillatingComponent.cs" t="Include" />
+            <e p="DestroyEffect.cs" t="Include" />
+            <e p="GismoLink.cs" t="Include" />
+            <e p="GismoSelect.cs" t="Include" />
+            <e p="ProjectileMovement.cs" t="Include" />
+          </e>
+          <e p="Enemies" t="Include">
+            <e p="MomentalDieComponent.cs" t="Include" />
+            <e p="MoveToPosition.cs" t="Include" />
+            <e p="SendDamage.cs" t="Include" />
+            <e p="Spawner.cs" t="Include" />
+          </e>
+          <e p="GameManager.cs" t="Include" />
+          <e p="HealthComponent.cs" t="Include" />
+          <e p="Items" t="Include">
+            <e p="AmmoPickup.cs" t="Include" />
+            <e p="HealthPickup.cs" t="Include" />
+            <e p="Item.cs" t="Include" />
+            <e p="ItemSet.cs" t="Include" />
+            <e p="LockedBy.cs" t="Include" />
+          </e>
+          <e p="Player" t="Include">
+            <e p="CharacterMovement.cs" t="Include" />
+            <e p="EnemyDamage.cs" t="Include" />
+            <e p="MouseLook.cs" t="Include" />
+            <e p="PlayerHealth.cs" t="Include" />
+            <e p="UseAttacks.cs" t="Include" />
+          </e>
+          <e p="Trigger" t="Include">
+            <e p="Door.cs" t="Include" />
+            <e p="Switch.cs" t="Include" />
+            <e p="TargetActivator.cs" t="Include" />
+            <e p="Trigger.cs" t="Include" />
+            <e p="Triggerable.cs" t="Include" />
+          </e>
+          <e p="UI" t="Include">
+            <e p="HidePanels.cs" t="Include" />
+            <e p="MenuScript.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="New Unity Project.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
