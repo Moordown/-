@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1574085230186114472}
   - component: {fileID: 2293774841478224036}
   - component: {fileID: -2393087314680825904}
+  - component: {fileID: 6547330666265934334}
   m_Layer: 0
   m_Name: NextLevel
   m_TagString: non-coliding
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1190452844563546927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_Children:
   - {fileID: 4137712282835089976}
   - {fileID: 5915765235763758277}
@@ -47,8 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4e33be1122d874ca1f90ab76220a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 0}
-  Player: {fileID: 0}
   GameManager: {fileID: 0}
 --- !u!65 &2293774841478224036
 BoxCollider:
@@ -61,7 +60,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.1, z: 0.4}
+  m_Size: {x: 1, y: 0.01, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-2393087314680825904
 Rigidbody:
@@ -79,6 +78,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &6547330666265934334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190452844563546927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9df93dfa389859409ed96bef6d71296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &2980466758774096675
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +103,6 @@ GameObject:
   - component: {fileID: 5915765235763758277}
   - component: {fileID: 4658985375179179950}
   - component: {fileID: 4026709796960354028}
-  - component: {fileID: 6130747990221209899}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -107,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 2980466758774096675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0000000053924, y: 0, z: 0.0000000053924}
-  m_LocalScale: {x: 0.4, y: 0.01, z: 0.4}
+  m_LocalScale: {x: 1, y: 0.01, z: 1}
   m_Children:
   - {fileID: 8233748504277062496}
   m_Father: {fileID: 1746697824636331837}
@@ -160,20 +172,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &6130747990221209899
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2980466758774096675}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 1.9999998
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0.00000011920928, z: -0.00000008940697}
 --- !u!1 &3521844180213307263
 GameObject:
   m_ObjectHideFlags: 0
@@ -3728,14 +3726,14 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
     type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
-    multiplyColliderForceByCollisionAngle: 1
+    multiplyColliderForceByCollisionAngle: 0
     plane0: {fileID: 0}
     plane1: {fileID: 0}
     plane2: {fileID: 0}
@@ -3907,11 +3905,11 @@ ParticleSystem:
     collidesWith:
       serializedVersion: 2
       m_Bits: 0
-    maxCollisionShapes: 256
+    maxCollisionShapes: 0
     quality: 0
     voxelSize: 0.5
     collisionMessages: 0
-    collidesWithDynamic: 1
+    collidesWithDynamic: 0
     interiorCollisions: 0
   TriggerModule:
     enabled: 0

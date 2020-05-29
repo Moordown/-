@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2079347129313742103}
+  - component: {fileID: 715980800025865}
   m_Layer: 0
   m_Name: Train
   m_TagString: Untagged
@@ -38,6 +39,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &715980800025865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079347129313742102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397942056e4840e985a36110061ff32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrainSpeed: 5
 --- !u!191 &7748343251034589768
 OffMeshLink:
   m_ObjectHideFlags: 0
@@ -649,20 +663,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2079347129202031939}
     m_Modifications:
-    - target: {fileID: -2393087314680825904, guid: 5ebe68903a680ed45927aabbd4655fe6,
-        type: 3}
-      propertyPath: m_Mass
-      value: 0.0000001
-      objectReference: {fileID: 0}
     - target: {fileID: 1190452844563546927, guid: 5ebe68903a680ed45927aabbd4655fe6,
         type: 3}
       propertyPath: m_Name
       value: NextLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574085230186114472, guid: 5ebe68903a680ed45927aabbd4655fe6,
-        type: 3}
-      propertyPath: MoveSpeed
-      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1746697824636331837, guid: 5ebe68903a680ed45927aabbd4655fe6,
         type: 3}
@@ -672,12 +676,12 @@ PrefabInstance:
     - target: {fileID: 1746697824636331837, guid: 5ebe68903a680ed45927aabbd4655fe6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.439
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1746697824636331837, guid: 5ebe68903a680ed45927aabbd4655fe6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1746697824636331837, guid: 5ebe68903a680ed45927aabbd4655fe6,
         type: 3}
@@ -719,57 +723,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1746697824636331837, guid: 5ebe68903a680ed45927aabbd4655fe6,
+    - target: {fileID: 6547330666265934334, guid: 5ebe68903a680ed45927aabbd4655fe6,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1746697824636331837, guid: 5ebe68903a680ed45927aabbd4655fe6,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1746697824636331837, guid: 5ebe68903a680ed45927aabbd4655fe6,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2293774841478224036, guid: 5ebe68903a680ed45927aabbd4655fe6,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2423832022134786757, guid: 5ebe68903a680ed45927aabbd4655fe6,
-        type: 3}
-      propertyPath: CollisionModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2423832022134786757, guid: 5ebe68903a680ed45927aabbd4655fe6,
-        type: 3}
-      propertyPath: CollisionModule.collidesWithDynamic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2423832022134786757, guid: 5ebe68903a680ed45927aabbd4655fe6,
-        type: 3}
-      propertyPath: CollisionModule.multiplyColliderForceByCollisionAngle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2423832022134786757, guid: 5ebe68903a680ed45927aabbd4655fe6,
-        type: 3}
-      propertyPath: CollisionModule.maxCollisionShapes
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: Train
+      value: 
+      objectReference: {fileID: 715980800025865}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ebe68903a680ed45927aabbd4655fe6, type: 3}
 --- !u!65 &4293647652925106822 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 2293774841478224036, guid: 5ebe68903a680ed45927aabbd4655fe6,
-    type: 3}
-  m_PrefabInstance: {fileID: 2612995817711333922}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &8167263676736254729 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 6130747990221209899, guid: 5ebe68903a680ed45927aabbd4655fe6,
     type: 3}
   m_PrefabInstance: {fileID: 2612995817711333922}
   m_PrefabAsset: {fileID: 0}
@@ -886,6 +849,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2079347129313742103}
     m_Modifications:
+    - target: {fileID: 6683879326103493177, guid: 258f8b85f6aff4749b19448d509682e5,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 5172706305818463835, guid: ebd61aa4f986a12408ff496d85870dd0,
+        type: 2}
     - target: {fileID: 6683879326103493180, guid: 258f8b85f6aff4749b19448d509682e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -960,7 +929,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ignoreCollisionObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 8167263676736254729}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 258f8b85f6aff4749b19448d509682e5, type: 3}
 --- !u!4 &2079347129202031939 stripped

@@ -101,6 +101,8 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 1303d69429924af4e89e0baeda7c5af8
+    name: currentVolumeForBackgroundEffects
   - guid: 5d2dd7307377e7445966766339418a3c
     name: currentVolumeForEffects
   m_AudioMixerGroupViews:
@@ -164,8 +166,8 @@ AudioMixerSnapshotController:
   m_FloatValues:
     5d2dd7307377e7445966766339418a3c: 0
     8e65f8916f7e19447ae37676deeaf4ae: -0.025776558
-    1303d69429924af4e89e0baeda7c5af8: -60.40684
-    4f390a957318c314e8f4af887e874fcc: 0.025578514
+    1303d69429924af4e89e0baeda7c5af8: 0.04171297
+    4f390a957318c314e8f4af887e874fcc: -10
     3c0b443aba3155b4ba50cd0e0582fbba: 0.62
   m_TransitionOverrides: {}
 --- !u!244 &696383823645940435

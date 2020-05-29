@@ -18,19 +18,19 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        Debug.LogWarning("1");
+        // Debug.LogWarning("1");
         rotation.y += Input.GetAxis("Mouse Y") * lookSensitivity;
 
-        Debug.LogWarning("2");
+        // Debug.LogWarning("2");
         rotation.y = Mathf.Clamp(rotation.y, minClamp, maxClamp);
         
-        Debug.LogWarning("3");
+        // Debug.LogWarning("3");
         player.transform.RotateAround(player.transform.position, Vector3.up, Input.GetAxis("Mouse X") * lookSensitivity);
         
-        Debug.LogWarning("4");
+        // Debug.LogWarning("4");
         currentLookRot.y = Mathf.SmoothDamp(currentLookRot.y, rotation.y, ref rotationV.y, lookSmoothDamp);
         
-        Debug.LogWarning("5");
+        // Debug.LogWarning("5");
         transform.localEulerAngles = new Vector3(-currentLookRot.y, 0, 0);
     }
 }
