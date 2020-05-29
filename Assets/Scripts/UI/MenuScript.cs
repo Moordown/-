@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-public class MenuScript : MonoBehaviour {
+
+public class MenuScript : SceneLoader
+{
+    public string fightScene;
+    
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        StartLoading(fightScene);
     }
+
     public void ExitGame()
     {
         Application.Quit();

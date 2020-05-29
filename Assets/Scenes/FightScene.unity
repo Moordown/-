@@ -1471,6 +1471,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1889458961080911175, guid: e5ac55aa3900e624393b39eeeb836cfc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7139045772277198370, guid: e5ac55aa3900e624393b39eeeb836cfc,
         type: 3}
       propertyPath: m_Name
@@ -1583,6 +1588,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ac55aa3900e624393b39eeeb836cfc, type: 3}
+--- !u!95 &2005038561 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1889458961080911175, guid: e5ac55aa3900e624393b39eeeb836cfc,
+    type: 3}
+  m_PrefabInstance: {fileID: 2005038560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2113439040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1660,6 +1671,16 @@ PrefabInstance:
       propertyPath: MaxRounds
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5989186147939813974, guid: 78cb7386dcfe13b46b0de1772cae33ff,
+        type: 3}
+      propertyPath: MenuSceneName
+      value: MenuScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989186147939813974, guid: 78cb7386dcfe13b46b0de1772cae33ff,
+        type: 3}
+      propertyPath: sceneTransitionAnimator
+      value: 
+      objectReference: {fileID: 2005038561}
     - target: {fileID: 5989186147939813975, guid: 78cb7386dcfe13b46b0de1772cae33ff,
         type: 3}
       propertyPath: m_Name
@@ -1830,5 +1851,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24100000, guid: ebd61aa4f986a12408ff496d85870dd0,
         type: 2}
+    - target: {fileID: 9124278925727271900, guid: 47b5f352875914f4da6a51d48a4419ce,
+        type: 3}
+      propertyPath: sceneTransitionAnimator
+      value: 
+      objectReference: {fileID: 2005038561}
+    - target: {fileID: 9124278925727271900, guid: 47b5f352875914f4da6a51d48a4419ce,
+        type: 3}
+      propertyPath: MenuSceneName
+      value: MenuScene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47b5f352875914f4da6a51d48a4419ce, type: 3}

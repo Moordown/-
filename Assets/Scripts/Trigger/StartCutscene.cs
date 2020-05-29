@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
-public class StartCutscene : MonoBehaviour
+public class StartCutscene : SceneLoader
 {
     public Triggerable Camera;
     public Triggerable Train;
     public GameObject Player;
     public AudioMixer mixer;
 
+    // public Animator sceneTransitionAnimator;
+    public string MenuSceneName;
     public float SoundDropSpeed;
-    
-    private float EffectVolume;
-    
-
-    private void Awake()
-    {
-        mixer.GetFloat("currentVolumeForBackgroundEffects", out EffectVolume);
-    }
 
     public void OnCollisionEnter(Collision other)
     {
@@ -31,7 +27,6 @@ public class StartCutscene : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         
-        // Player.GetComponent<CharacterMovement>().enabled = false;
         Camera.Trigger(TriggerAction.Activate);
         yield return new object();
 
@@ -39,7 +34,22 @@ public class StartCutscene : MonoBehaviour
         Train.Trigger(TriggerAction.Activate);
         yield return new object();
 
-        float value; 
+        StartCoroutine(TurnOffSound());
+        yield return new WaitForSeconds(5.0f);
+        StartLoading(MenuSceneName);
+        // StartCoroutine(LoadNewScene(MenuSceneName));
+    }
+    
+    // IEnumerator LoadNewScene(string sceneName)
+    // {
+    //     sceneTransitionAnimator.SetTrigger("end");
+    //     yield return new WaitForSeconds(1.5f);
+    //     SceneManager.LoadScene(sceneName);
+    // }
+
+    private IEnumerator TurnOffSound()
+    {
+        float value;
         // sound effects mixer
         while (mixer.GetFloat("currentVolumeForBackgroundEffects", out value) && Math.Abs(value + 80) > 0.01)
         {
@@ -48,6 +58,4 @@ public class StartCutscene : MonoBehaviour
             yield return mixer.SetFloat("currentVolumeForBackgroundEffects", value);
         }
     }
-    
-    
 }

@@ -5,21 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Spawners
-{
-    public GameObject go;
-    public bool active;
-
-    public Spawners(GameObject newGo, bool newBool)
-    {
-        go = newGo;
-        active = newBool;
-    }
-}
-
 [RequireComponent(typeof(Trigger))]
 [RequireComponent(typeof(AudioSource))]
-public class GameManager : MonoBehaviour
+public class GameManager : SceneLoader
 {
     public GameObject panel;
     public AudioClip playerDeadSound;
@@ -37,13 +25,16 @@ public class GameManager : MonoBehaviour
     private bool isPlayerDead;
     private Trigger trigger;
 
-    public List<Spawners> spawner = new List<Spawners>();
+    public string MenuSceneName;
+    public List<Spawner> spawners;
 
     void Start()
     {
         isPlayerDead = false;
         trigger = gameObject.GetComponent<Trigger>();
         source = gameObject.GetComponent<AudioSource>();
+        isGameJudged = true;
+        spawners = new List<Spawner>();
         
         Time.timeScale = 1;
         panel.SetActive(false);
@@ -53,51 +44,39 @@ public class GameManager : MonoBehaviour
         {
             var go = (GameObject) o;
             if (go.name.Contains("Spawner"))
-                spawner.Add(new Spawners(go, true));
+                spawners.Add(go.GetComponent<Spawner>());
         }
-        Debug.LogWarning(spawner.Count());
     }
+
+    private bool isGameJudged;
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Q))
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene(0);
-            return;
-        }
-
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        int total = 0;
         health = playerHealth.health;
         if (health > 0)
         {
-            if (spawner.Count == 0) return;
-            for (int i = spawner.Count - 1; i >= 0; i--)
-            {
-                if (spawner[i].go.GetComponent<Spawner>().spawnsDead)
-                {
-                    total++;
-                }
-            }
+            if (!isGameJudged) return;
 
-            if (total == spawner.Count && roundsSurvived == currentRound)
+            var deadCount = spawners.Count(s => s.spawnsDead);
+            if (deadCount == spawners.Count && roundsSurvived == currentRound)
             {
                 roundsSurvived++;
                 panelText.text = $"Round {roundsSurvived} Completed!";
-                foreach (var _spawner in spawner)
-                    _spawner.go.GetComponent<Spawner>().amount = roundsSurvived + 1;
+                foreach (var spawner in spawners)
+                    spawner.amount = roundsSurvived + 1;
                 panel.SetActive(true);
             }
-
-            if (roundsSurvived != currentRound && Input.GetButton("Fire2"))
+            else if (roundsSurvived != currentRound && Input.GetButton("Fire2"))
             {
                 currentRound = roundsSurvived;
                 panel.SetActive(false);
                 if (currentRound == MaxRounds)
+                {
+                    isGameJudged = false;
                     trigger.TriggerTargets();
+                }
                 else
                     RoundComplete?.Invoke();
             }
@@ -106,8 +85,7 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetButton("Fire2"))
             {
-                Scene current = SceneManager.GetActiveScene();
-                SceneManager.LoadScene(current.name);
+                StartLoading(MenuSceneName);
             }
             else
             {
@@ -115,9 +93,10 @@ public class GameManager : MonoBehaviour
                     source.PlayOneShot(playerDeadSound);
                 isPlayerDead = true;
                 panel.SetActive(true);
-                panelText.text = string.Format("Survived {0} Rounds", roundsSurvived);
-                Time.timeScale = 0;
+                panelText.text = $"Survived {roundsSurvived} Rounds";
+                // Time.timeScale = 0;
             }
         }
     }
+
 }
