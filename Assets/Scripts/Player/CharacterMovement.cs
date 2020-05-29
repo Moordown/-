@@ -1,12 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 public class CharacterMovement : MonoBehaviour
 {
     public float speed = 5;
     public float jumpPower = 4;
-    public Collider[] ignoreCollisionObjects;
     Rigidbody rb;
     CapsuleCollider col;
 
@@ -16,8 +14,6 @@ public class CharacterMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
-        foreach (var ignoreCollisionObject in ignoreCollisionObjects)
-            Physics.IgnoreCollision(col, ignoreCollisionObject);
     }
 
     void Update()

@@ -17,14 +17,15 @@ public class Spawners
     }
 }
 
+[RequireComponent(typeof(Trigger))]
 [RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviour
 {
     public GameObject panel;
     public AudioClip playerDeadSound;
-    public AudioClip fightMusic;
 
     public delegate void RestartRounds();
+    public int MaxRounds;
     public static event RestartRounds RoundComplete;
 
     private int health;
@@ -34,13 +35,16 @@ public class GameManager : MonoBehaviour
     private Text panelText;
     private AudioSource source;
     private bool isPlayerDead;
+    private Trigger trigger;
 
     public List<Spawners> spawner = new List<Spawners>();
 
     void Start()
     {
         isPlayerDead = false;
+        trigger = gameObject.GetComponent<Trigger>();
         source = gameObject.GetComponent<AudioSource>();
+        
         Time.timeScale = 1;
         panel.SetActive(false);
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
@@ -56,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.Q))
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -91,8 +95,11 @@ public class GameManager : MonoBehaviour
             if (roundsSurvived != currentRound && Input.GetButton("Fire2"))
             {
                 currentRound = roundsSurvived;
-                RoundComplete?.Invoke();
                 panel.SetActive(false);
+                if (currentRound == MaxRounds)
+                    trigger.TriggerTargets();
+                else
+                    RoundComplete?.Invoke();
             }
         }
         else

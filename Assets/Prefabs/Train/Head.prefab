@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6683879326103493177}
   - component: {fileID: 6683879326103493178}
   - component: {fileID: 6683879326103493179}
+  - component: {fileID: 7329814510092682876}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -226,3 +227,16 @@ MonoBehaviour:
   BigPulsePeriod: 6.38
   BigPulseForce: 5000
   soundToPlay: {fileID: 8300000, guid: b902e36f6302316469e733a4e0a06a5c, type: 3}
+--- !u!114 &7329814510092682876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683879326103493181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd54f774b0d143d68827499d07a5f911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreCollisionObjects: []
