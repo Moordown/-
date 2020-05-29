@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
 
 public class StartCutscene : SceneLoader
 {
@@ -13,9 +10,10 @@ public class StartCutscene : SceneLoader
     public GameObject Player;
     public AudioMixer mixer;
 
-    // public Animator sceneTransitionAnimator;
     public string MenuSceneName;
     public float SoundDropSpeed;
+
+    public GameObject FightInterface;
 
     public void OnCollisionEnter(Collision other)
     {
@@ -25,6 +23,7 @@ public class StartCutscene : SceneLoader
     
     IEnumerator RunCutscene(float time)
     {
+        FightInterface.SetActive(false);
         yield return new WaitForSeconds(time);
         
         Camera.Trigger(TriggerAction.Activate);
@@ -37,20 +36,11 @@ public class StartCutscene : SceneLoader
         StartCoroutine(TurnOffSound());
         yield return new WaitForSeconds(5.0f);
         StartLoading(MenuSceneName);
-        // StartCoroutine(LoadNewScene(MenuSceneName));
     }
-    
-    // IEnumerator LoadNewScene(string sceneName)
-    // {
-    //     sceneTransitionAnimator.SetTrigger("end");
-    //     yield return new WaitForSeconds(1.5f);
-    //     SceneManager.LoadScene(sceneName);
-    // }
 
     private IEnumerator TurnOffSound()
     {
         float value;
-        // sound effects mixer
         while (mixer.GetFloat("currentVolumeForBackgroundEffects", out value) && Math.Abs(value + 80) > 0.01)
         {
             value -= SoundDropSpeed * Time.deltaTime;

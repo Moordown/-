@@ -16,6 +16,8 @@ public class SceneLoader : MonoBehaviour
     {
         sceneTransitionAnimator.Play("end");
         yield return new WaitForSeconds(1.5f);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         SceneManager.LoadScene(sceneName);
     }
 }

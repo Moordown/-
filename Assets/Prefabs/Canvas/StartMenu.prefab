@@ -30,7 +30,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7812452906596950635}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -100,7 +100,7 @@ RectTransform:
   m_LocalScale: {x: 1.3483, y: 1.3483, z: 1.3483}
   m_Children: []
   m_Father: {fileID: 7812452906596950635}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 12.6710005}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -178,10 +178,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 8147575675175060809}
   - {fileID: 7812452906184047725}
   - {fileID: 7812452907070131427}
   - {fileID: 7812452906294689647}
-  - {fileID: 8147575675175060809}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -502,7 +502,7 @@ RectTransform:
   - {fileID: 7812452906968681609}
   - {fileID: 7812452907326823827}
   m_Father: {fileID: 7812452906596950635}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -796,7 +796,7 @@ PrefabInstance:
     - target: {fileID: 2777170098864583872, guid: ac1981e3ce31b3f449fb4889578b3d8d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2777170098864583872, guid: ac1981e3ce31b3f449fb4889578b3d8d,
         type: 3}
@@ -870,15 +870,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac1981e3ce31b3f449fb4889578b3d8d, type: 3}
---- !u!224 &8147575675175060809 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2777170098864583872, guid: ac1981e3ce31b3f449fb4889578b3d8d,
-    type: 3}
-  m_PrefabInstance: {fileID: 6311932956877566345}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &8147575675175060810 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2777170098864583875, guid: ac1981e3ce31b3f449fb4889578b3d8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6311932956877566345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &8147575675175060809 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2777170098864583872, guid: ac1981e3ce31b3f449fb4889578b3d8d,
     type: 3}
   m_PrefabInstance: {fileID: 6311932956877566345}
   m_PrefabAsset: {fileID: 0}
