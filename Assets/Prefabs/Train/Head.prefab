@@ -200,7 +200,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6683879326103493181}
   serializedVersion: 2
-  m_Mass: 15
+  m_Mass: 1500
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PulseStart: 1
   SmallPulsePeriod: 1.276
-  SmallPulseForce: 25
+  SmallPulseForce: 2500
   BigPulsePeriod: 6.38
-  BigPulseForce: 50
+  BigPulseForce: 5000
   soundToPlay: {fileID: 8300000, guid: b902e36f6302316469e733a4e0a06a5c, type: 3}

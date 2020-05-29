@@ -6,6 +6,7 @@ TagManager:
   tags:
   - bullet
   - Spawner
+  - non-coliding
   layers:
   - Default
   - TransparentFX

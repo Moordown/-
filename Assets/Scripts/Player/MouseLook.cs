@@ -13,22 +13,24 @@ public class MouseLook : MonoBehaviour
 
     void Start()
     {
-        //Access the player GameObject.
         player = transform.parent.gameObject;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //Player input from the mouse
+        Debug.LogWarning("1");
         rotation.y += Input.GetAxis("Mouse Y") * lookSensitivity;
-        //Limit ability look up and down.
+
+        Debug.LogWarning("2");
         rotation.y = Mathf.Clamp(rotation.y, minClamp, maxClamp);
-        //Rotate the character around based on the mouse X position.
+        
+        Debug.LogWarning("3");
         player.transform.RotateAround(player.transform.position, Vector3.up, Input.GetAxis("Mouse X") * lookSensitivity);
-        //Smooth the current Y rotation for looking up and down.
+        
+        Debug.LogWarning("4");
         currentLookRot.y = Mathf.SmoothDamp(currentLookRot.y, rotation.y, ref rotationV.y, lookSmoothDamp);
-        //Update the camera X rotation based on the values generated.
+        
+        Debug.LogWarning("5");
         transform.localEulerAngles = new Vector3(-currentLookRot.y, 0, 0);
     }
 }
