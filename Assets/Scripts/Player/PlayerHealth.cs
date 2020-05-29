@@ -49,7 +49,6 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator SetEffect()
     {
         isActive = true;
-        // float alpha = damageFX.color.a;
         Color color = damageFX.color;
         damageFX.color = new Color(color.r, color.g, color.b, maxAlpha);
         if (_isaudioSourceNotNull && _isaudioClipNotNull)
@@ -60,5 +59,11 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         isActive = false;
         yield return null;
+    }
+
+    public void SetDangerEffect()
+    {
+        Color color = damageFX.color;
+        damageFX.color = new Color(color.r, color.g, color.b, maxAlpha);
     }
 }

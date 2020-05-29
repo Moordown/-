@@ -1274,7 +1274,7 @@ PrefabInstance:
     - target: {fileID: 5989186147939813974, guid: 78cb7386dcfe13b46b0de1772cae33ff,
         type: 3}
       propertyPath: MaxRounds
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5989186147939813974, guid: 78cb7386dcfe13b46b0de1772cae33ff,
         type: 3}

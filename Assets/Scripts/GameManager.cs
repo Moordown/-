@@ -93,8 +93,8 @@ public class GameManager : SceneLoader
                     source.PlayOneShot(playerDeadSound);
                 isPlayerDead = true;
                 panel.SetActive(true);
+                playerHealth.SetDangerEffect();
                 panelText.text = $"Survived {roundsSurvived} Rounds";
-                // Time.timeScale = 0;
             }
         }
     }
