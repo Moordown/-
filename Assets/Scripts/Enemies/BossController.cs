@@ -19,6 +19,9 @@ public class BossController : MonoBehaviour
     public static string deadName = "isDead";
     public static string attackName = "isAttacking";
     public static string runName = "isRunning";
+    private Rigidbody _playerRigidbody;
+    private PlayerHealth _playerHealth;
+    private CapsuleCollider _capsuleCollider;
 
     void Start()
     {
@@ -26,6 +29,9 @@ public class BossController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         gameObject.SetActive(false);
+        _capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
+        _playerHealth = player.gameObject.GetComponent<PlayerHealth>();
+        _playerRigidbody = player.gameObject.GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -34,22 +40,16 @@ public class BossController : MonoBehaviour
         {
             direciton = player.position - transform.position;
             if (direciton.magnitude > 2f)
-                transform.LookAt(new Vector3(player.position.x, 0, player.position.z));
+                transform.LookAt(new Vector3(0, player.position.y, player.position.z));
             if (!animator.GetBool(runName) && attackType == 0)
-                attackType = Random.Range(1, AttackRange + 1);
+                attackType = 1 + (attackType + 1) % AttackRange;
         }
         else
         {
             agent.isStopped = true;
-            gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            _capsuleCollider.enabled = false;
             Judger.OnDeath(gameObject);
         }
-    }
-
-    IEnumerator DestroyObject()
-    {
-        yield return new WaitForSeconds(138f/30);
-        gameObject.SetActive(false);
     }
 
     void FixedUpdate()
@@ -74,13 +74,10 @@ public class BossController : MonoBehaviour
                 if (setForce && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f)
                 {
                     setForce = false;
-                    player.gameObject
-                        .GetComponent<Rigidbody>()
-                        .AddExplosionForce(20f, transform.position, 6.0f, 4.0f, ForceMode.Impulse);
+                    _playerRigidbody
+                        .AddExplosionForce(1f, transform.position, 6.0f, 4.0f, ForceMode.Impulse);
                     if (direciton.magnitude < 3f)
-                    {
-                        Debug.Log("Player Damage");
-                    }
+                        _playerHealth.ApplyDamage(attackType);
                 }
                 else
                 {

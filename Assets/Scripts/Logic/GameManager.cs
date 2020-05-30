@@ -58,7 +58,6 @@ public class GameManager : SceneLoader
             if (isBossFight) return;
 
             var deadCount = spawners.Count(s => s.spawnsDead);
-            Debug.Log($"{deadCount} {isBossFight} {spawners.Count}");
             if (deadCount == spawners.Count && roundsSurvived == currentRound)
             {
                 roundsSurvived++;

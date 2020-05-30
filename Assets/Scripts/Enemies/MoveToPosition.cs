@@ -21,7 +21,6 @@ public class MoveToPosition : MonoBehaviour
         
         goal = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        //Set timer to the same a knockback in first instance.
         timer = knockbackTime;
     }
 

@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour
         _isaudioSourceNotNull = audioSource != null;
     }
 
-    void ApplyDamage(int damage)
+    public void ApplyDamage(int damage)
     {
         health -= damage;
         UpdateText();

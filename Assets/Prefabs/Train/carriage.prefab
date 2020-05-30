@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 80218571572066189}
   - component: {fileID: 6464371372284993137}
   - component: {fileID: 91042053}
+  - component: {fileID: 5894638215795227955}
   m_Layer: 0
   m_Name: carriage
   m_TagString: Untagged
@@ -172,10 +173,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PulseStart: 1
+  IsStopMoving: 0
   SmallPulsePeriod: 1.276
   SmallPulseForce: 1500
   BigPulsePeriod: 6.38
-  BigPulseForce: 3000
   soundToPlay: {fileID: 8300000, guid: b902e36f6302316469e733a4e0a06a5c, type: 3}
 --- !u!54 &80218571572066189
 Rigidbody:
@@ -307,3 +308,15 @@ OffMeshLink:
   m_BiDirectional: 1
   m_Activated: 1
   m_AutoUpdatePositions: 0
+--- !u!114 &5894638215795227955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80218571572066186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c8ee06fbdec7b49a901d3749a8a1f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

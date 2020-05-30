@@ -2,22 +2,19 @@
 
 public class EnemyDamage : MonoBehaviour
 {
-    private int hitNumber;
+    public int MaxHitNumber;
+    private int currentHitNumber;
 
     private void OnEnable()
     {
-        hitNumber = 0;
+        currentHitNumber = 0;
     }
 
     void OnCollisionEnter(Collision other)
     {
         if (other.collider.CompareTag("bullet"))
-        {
-            hitNumber++;
-        }
-        if (hitNumber == 3)
-        {
+            currentHitNumber++;
+        if (currentHitNumber >= MaxHitNumber)
             gameObject.SetActive(false);
-        }
     }
 }
