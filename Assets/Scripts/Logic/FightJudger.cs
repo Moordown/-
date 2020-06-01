@@ -15,12 +15,13 @@ public class FightJudger : MonoBehaviour
     public void OnDeath(GameObject obj)
     {
         trigger.TriggerTargets();
-        StartCoroutine(DestroyObject(obj));
+        StartCoroutine(InactivateObject(obj));
     }
 
-    IEnumerator DestroyObject(GameObject obj)
+    IEnumerator InactivateObject(GameObject obj)
     {
         yield return new WaitForSeconds(140f/30);
         obj.SetActive(false);
+        obj.GetComponent<Collider>().enabled = false;
     }
 }

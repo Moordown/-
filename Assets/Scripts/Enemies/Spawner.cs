@@ -36,30 +36,36 @@ public class Spawner : Triggerable
     private void ResetRound()
     {
         spawnsDead = false;
+        spawned = 0;
         _getAmount = Math.Min(_maxSpawned, startAmount);
         StartCoroutine(SpawnObjects());
     }
 
     void Update()
     {
-        if (_spawnObjects.Count(go => !go.activeSelf) == _maxSpawned)
+        if (spawned == _getAmount && _spawnObjects.Count(go => !go.activeSelf) == _maxSpawned)
             spawnsDead = true;
     }
 
+    private int spawned;
+    
     private IEnumerator SpawnObjects()
     {
         Debug.Log(_getAmount);
         for (var i = 0; i < _getAmount; i++)
         {
-            Debug.Log("spawn object");
+            spawned++;
+            Debug.Log($"spawn object: {i}");
+            _spawnObjects[i].transform.position = transform.position;
             _spawnObjects[i].SetActive(true);
+            _spawnObjects[i].GetComponent<Collider>().enabled = true;
+            _spawnObjects[i].GetComponent<EnemyHealth>().currentHealth =
+                _spawnObjects[i].GetComponent<EnemyHealth>().Health;
             yield return new WaitForSeconds(delaySpawn);
         }
     }
 
     public override void Trigger(TriggerAction action)
     {
-        // if (action == TriggerAction.Activate)
-        //     _enemyDead++;
     }
 }

@@ -188,6 +188,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7829640764973822306, guid: 53143acc578cc1145ad1884030798ef1,
+        type: 3}
+      propertyPath: Health
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 8829799669680467924, guid: 53143acc578cc1145ad1884030798ef1,
         type: 3}
       propertyPath: Judger
@@ -244,6 +249,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 71148733243031870, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 71148733243031870, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 71148733243031870, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 71148733243031870, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 71148733243031870, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 71148733243031870, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 71148733243031870, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 71148733243031870, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 288540947791152532, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: jumpPower
@@ -258,6 +303,11 @@ PrefabInstance:
         type: 3}
       propertyPath: AttackDamage.Array.data[1]
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 799399455852606105, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: ActiveOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1031184694669401362, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
@@ -274,6 +324,41 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 5.45
       objectReference: {fileID: 0}
+    - target: {fileID: 1192803556963685416, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1192803556963685416, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1192803556963685416, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010423119016820732, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: AttackDamage.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010423119016820732, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: AttackDamage.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191253440253508721, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_Name
+      value: tailSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459635221155663680, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: delaySpawn
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3503813236442041241, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: m_Constraints
@@ -288,6 +373,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576004081264767326, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: Health
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3584009671400477584, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
@@ -374,10 +464,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 4719201078373353454, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719201078373353454, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719201078373353454, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6514254727314995500, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: AttackDamage.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6514254727314995500, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: AttackDamage.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911293014838590113, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980515080368225003, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: Health
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7107006626565030195, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: MaxRounds
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7107006626565030195, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
@@ -394,6 +519,16 @@ PrefabInstance:
       propertyPath: mouseLock
       value: 
       objectReference: {fileID: 677194190}
+    - target: {fileID: 7179683619923544464, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: delaySpawn
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079943467408308110, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: Health
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 9015768722229474480, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: m_Enabled

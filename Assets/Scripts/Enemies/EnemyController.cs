@@ -7,7 +7,10 @@ using Random = UnityEngine.Random;
 
 public enum AttackAnimationState
 {
-    Start, Force, End, None
+    Start,
+    Force,
+    End,
+    None
 }
 
 [RequireComponent(typeof(Animator))]
@@ -43,7 +46,7 @@ public class EnemyController : MonoBehaviour
         _playerHealth = player.gameObject.GetComponent<PlayerHealth>();
         _playerRigidbody = player.gameObject.GetComponent<Rigidbody>();
     }
-    
+
     void Update()
     {
         if (!animator.GetBool(deadName))
@@ -54,10 +57,7 @@ public class EnemyController : MonoBehaviour
                 agent.isStopped = true;
                 return;
             }
-            if (attackType == 0)
-                attackType = Random.Range(1, AttackRange + 1);
-            
-            transform.LookAt(new Vector3(player.position.x, player.position.y, player.position.z));
+
             agent.isStopped = false;
             agent.SetDestination(player.position);
             if (direciton.magnitude > 2f)
@@ -84,41 +84,41 @@ public class EnemyController : MonoBehaviour
                 switch (state)
                 {
                     case AttackAnimationState.None:
+                        attackType = Random.Range(1, AttackRange + 1);
                         animator.SetBool(runName, false);
                         animator.SetInteger(attackName, attackType);
                         state = AttackAnimationState.Start;
                         break;
                     case AttackAnimationState.Start:
-                        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.1f)
+                        // TODO: эта тупая анимация может потом по второму кругу пойти, или стейтмашина
+                        // TODO: рассинхронизируется с тем, что мы показываем.
+                        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.1f
+                           && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.3f)
                             state = AttackAnimationState.Force;
                         break;
                     case AttackAnimationState.Force:
-                        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f)
+                        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f)
                         {
-                            _playerRigidbody
-                                .AddExplosionForce(1f, transform.position, 6.0f, 4.0f, ForceMode.Impulse);
+                            state = AttackAnimationState.End;
                             if (direciton.magnitude < 3f && attackType != 0)
                             {
-                                Debug.Log($"Attack type: {attackType}");
-                                Debug.Log($"attack damage: {AttackDamage[attackType - 1]}");
-                        
+                                _playerRigidbody.AddExplosionForce(
+                                    AttackDamage[attackType - 1] * _playerRigidbody.mass, transform.position,
+                                    6.0f, 4.0f, ForceMode.Impulse);
                                 _playerHealth.ApplyDamage(AttackDamage[attackType - 1]);
                             }
-
-                            state = AttackAnimationState.End;
                         }
+
                         break;
                     case AttackAnimationState.End:
-
-                        if (Math.Abs(animator.GetCurrentAnimatorStateInfo(0).normalizedTime - 1f) < 0.05)
+                        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f - 0.05f)
                         {
-                            Debug.Log("end animation");
-
                             animator.SetBool(runName, false);
                             animator.SetInteger(attackName, 0);
                             attackType = 0;
                             state = AttackAnimationState.None;
                         }
+
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

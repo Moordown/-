@@ -2,7 +2,8 @@
 using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
-    public int health = 5000;
+    public int Health = 10;
+    public int currentHealth;
     public GameObject enemyMesh;
     public Texture[] texture;
     public string[] weakSpotNames;
@@ -14,11 +15,12 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        currentHealth = Health;
     }
     
     public void Update()
     {
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             anim.SetBool(EnemyController.deadName, true);
             anim.SetBool(EnemyController.runName, false);
@@ -31,13 +33,13 @@ public class EnemyHealth : MonoBehaviour
         {
             Destroy(col.gameObject);
             Debug.Log(name);
-            if (enemyMesh != null && health > 0)
+            if (enemyMesh != null && currentHealth > 0)
             {
                 for (int i = 0; i < weakSpotNames.Length; i++)
                 {
                     if (name == weakSpotNames[i])
                     {
-                        health -= weakSpotHealth[i];
+                        currentHealth -= weakSpotHealth[i];
                         StartCoroutine(HitFlash(i));
                     }
                 }
@@ -48,7 +50,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (other.gameObject.CompareTag("bullet"))
         {
-            health -= 1;
+            currentHealth -= 1;
             Destroy(other.gameObject);
         }
     }
