@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.75
+    agentRadius: 0.7
     agentHeight: 1.5
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.25
+    cellSize: 0.23333333
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -309,6 +309,11 @@ PrefabInstance:
       propertyPath: jumpPower
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 288540948855719493, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4919
+      objectReference: {fileID: 0}
     - target: {fileID: 799399455852606105, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: AttackDamage.Array.data[0]
@@ -469,6 +474,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 5.13
       objectReference: {fileID: 0}
+    - target: {fileID: 3584009672663870411, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3584009672663870422, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: EverySeconds
@@ -487,12 +497,12 @@ PrefabInstance:
     - target: {fileID: 4719201078373353454, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.01
+      value: 6.13
       objectReference: {fileID: 0}
     - target: {fileID: 4719201078373353454, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25
+      value: -23.14
       objectReference: {fileID: 0}
     - target: {fileID: 6514254727314995500, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
@@ -503,6 +513,16 @@ PrefabInstance:
         type: 3}
       propertyPath: AttackDamage.Array.data[1]
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595611215326122972, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8600000, guid: 9c2db1167f89d29438c6f68be77ee04e, type: 2}
+    - target: {fileID: 6595611215326122972, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 6144
       objectReference: {fileID: 0}
     - target: {fileID: 6911293014838590113, guid: a06d8063be2200546bbfe67605749648,
         type: 3}

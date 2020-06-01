@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6683879326103493178}
   - component: {fileID: 6683879326103493179}
   - component: {fileID: 7329814510092682876}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,10 +223,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PulseStart: 1
+  IsStopMoving: 0
   SmallPulsePeriod: 1.276
   SmallPulseForce: 2500
   BigPulsePeriod: 6.38
-  BigPulseForce: 5000
   soundToPlay: {fileID: 8300000, guid: b902e36f6302316469e733a4e0a06a5c, type: 3}
 --- !u!114 &7329814510092682876
 MonoBehaviour:
