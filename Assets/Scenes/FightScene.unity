@@ -127,6 +127,30 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1335662968}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &677194190 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 288540948855719491, guid: a06d8063be2200546bbfe67605749648,
+    type: 3}
+  m_PrefabInstance: {fileID: 3584009672427671077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9c8139597482248843ba0cd07aab01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &744788261 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 288540947791152532, guid: a06d8063be2200546bbfe67605749648,
+    type: 3}
+  m_PrefabInstance: {fileID: 3584009672427671077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c53cb46f0f92f2e42b161ad3285a1217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1335662968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -194,8 +218,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: mutant2
       objectReference: {fileID: 0}
+    - target: {fileID: 5385976436441918736, guid: e3287c7c0c4a0264c80eeca886fe6596,
+        type: 3}
+      propertyPath: health
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5385976436441918741, guid: e3287c7c0c4a0264c80eeca886fe6596,
+        type: 3}
+      propertyPath: Judger
+      value: 
+      objectReference: {fileID: 1357092678}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3287c7c0c4a0264c80eeca886fe6596, type: 3}
+--- !u!114 &1357092678 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1357092678, guid: a06d8063be2200546bbfe67605749648,
+    type: 3}
+  m_PrefabInstance: {fileID: 3584009672427671077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867ce0b238ec4c75a9b6645cb0717091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3584009672427671077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -316,18 +362,28 @@ PrefabInstance:
     - target: {fileID: 3584009672663870422, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: EverySeconds
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7107006626565030195, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: MaxRounds
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7107006626565030195, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: mutant
       value: 
       objectReference: {fileID: 342572123}
+    - target: {fileID: 7107006626565030195, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: characterMovement
+      value: 
+      objectReference: {fileID: 744788261}
+    - target: {fileID: 7107006626565030195, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: mouseLock
+      value: 
+      objectReference: {fileID: 677194190}
     - target: {fileID: 9015768722229474480, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: m_Enabled

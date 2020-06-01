@@ -10,6 +10,9 @@ public class GameManager : SceneLoader
     public GameObject mutant;
     public AudioClip playerDeadSound;
 
+    public CharacterMovement characterMovement;
+    public MouseLook mouseLock;
+
     public delegate void RestartRounds();
     public int MaxRounds;
     public static event RestartRounds RoundComplete;
@@ -93,6 +96,9 @@ public class GameManager : SceneLoader
                 panel.SetActive(true);
                 playerHealth.SetDangerEffect();
                 panelText.text = $"Survived {roundsSurvived} Rounds";
+
+                characterMovement.enabled = false;
+                mouseLock.enabled = false;
             }
         }
     }
