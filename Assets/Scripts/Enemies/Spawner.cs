@@ -12,7 +12,6 @@ public class Spawner : Triggerable
     public bool spawnsDead;
 
     private int _getAmount;
-    private int _enemyDead;
     private readonly int _maxSpawned = 100;
 
     private readonly List<GameObject> _spawnObjects = new List<GameObject>();
@@ -20,13 +19,16 @@ public class Spawner : Triggerable
     public void Start()
     {
         GameManager.RoundComplete += ResetRound;
+        _getAmount = 0;
         for (var i = 0; i < _maxSpawned; i++)
         {
             var instance = Instantiate(spawn, transform);
             _spawnObjects.Add(instance);
+
+            instance.SetActive(false);
+            instance.GetComponent<EnemyController>().ActiveOnAwake = true;
             instance.transform.parent = null;
             instance.transform.position = transform.position;
-            instance.SetActive(false);
         }
         ResetRound();
     }
@@ -34,21 +36,22 @@ public class Spawner : Triggerable
     private void ResetRound()
     {
         spawnsDead = false;
-        _getAmount = Math.Min(startAmount, _maxSpawned);
-        _enemyDead = 0;
+        _getAmount = Math.Min(_maxSpawned, startAmount);
         StartCoroutine(SpawnObjects());
     }
 
     void Update()
     {
-        if (_enemyDead == _getAmount)
+        if (_spawnObjects.Count(go => !go.activeSelf) == _maxSpawned)
             spawnsDead = true;
     }
 
     private IEnumerator SpawnObjects()
     {
+        Debug.Log(_getAmount);
         for (var i = 0; i < _getAmount; i++)
         {
+            Debug.Log("spawn object");
             _spawnObjects[i].SetActive(true);
             yield return new WaitForSeconds(delaySpawn);
         }
@@ -56,7 +59,7 @@ public class Spawner : Triggerable
 
     public override void Trigger(TriggerAction action)
     {
-        if (action == TriggerAction.Activate)
-            _enemyDead++;
+        // if (action == TriggerAction.Activate)
+        //     _enemyDead++;
     }
 }

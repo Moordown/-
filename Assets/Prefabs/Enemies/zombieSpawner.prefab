@@ -141,6 +141,16 @@ PrefabInstance:
       propertyPath: Judger
       value: 
       objectReference: {fileID: 8172879106930248995}
+    - target: {fileID: 1224415246549890101, guid: 7713426afe087b34bb4b17757bfffa5e,
+        type: 3}
+      propertyPath: AttackDamage.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224415246549890101, guid: 7713426afe087b34bb4b17757bfffa5e,
+        type: 3}
+      propertyPath: AttackDamage.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6162978054386130717, guid: 7713426afe087b34bb4b17757bfffa5e,
         type: 3}
       propertyPath: m_LocalPosition.x

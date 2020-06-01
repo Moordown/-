@@ -714,7 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackRange: 2
-  AttackDamage: 0200000005000000
+  AttackDamage: 0500000002000000
   Judger: {fileID: 0}
   ActiveOnAwake: 1
 --- !u!114 &-4827936477121042139
@@ -729,7 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb143fd149eb6ff41858b9a6a485e81a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
   enemyMesh: {fileID: 4620265653989872288}
   texture:
   - {fileID: 2800000, guid: 13806182b68ec4546954d7fdaa3d2e98, type: 3}

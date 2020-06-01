@@ -5,6 +5,11 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
+public enum AttackAnimationState
+{
+    Start, Force, End, None
+}
+
 [RequireComponent(typeof(Animator))]
 public class EnemyController : MonoBehaviour
 {
@@ -26,6 +31,7 @@ public class EnemyController : MonoBehaviour
     public static string runName = "isRunning";
     private Rigidbody _playerRigidbody;
     private PlayerHealth _playerHealth;
+    private AttackAnimationState state;
 
     void Start()
     {
@@ -33,7 +39,7 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         gameObject.SetActive(ActiveOnAwake);
-        animator.SetBool(runName, true);
+        state = AttackAnimationState.None;
         _playerHealth = player.gameObject.GetComponent<PlayerHealth>();
         _playerRigidbody = player.gameObject.GetComponent<Rigidbody>();
     }
@@ -43,12 +49,15 @@ public class EnemyController : MonoBehaviour
         if (!animator.GetBool(deadName))
         {
             direciton = player.position - transform.position;
-            if (!animator.GetBool(runName))
+            if (state != AttackAnimationState.None)
             {
                 agent.isStopped = true;
                 return;
             }
-
+            if (attackType == 0)
+                attackType = Random.Range(1, AttackRange + 1);
+            
+            transform.LookAt(new Vector3(player.position.x, player.position.y, player.position.z));
             agent.isStopped = false;
             agent.SetDestination(player.position);
             if (direciton.magnitude > 2f)
@@ -61,39 +70,58 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private bool isAnimated;
-
     void FixedUpdate()
     {
+        Debug.Log(state);
         if (!animator.GetBool(deadName))
         {
-            if (direciton.magnitude > 3f && animator.GetInteger(attackName) == 0)
+            if (direciton.magnitude > 3f && state == AttackAnimationState.None)
             {
                 animator.SetBool(runName, true);
             }
             else
             {
-                animator.SetBool(runName, false);
-                animator.SetInteger(attackName, attackType);
-                
-                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.1f)
-                    setForce = true;
-                if (setForce && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f)
+                switch (state)
                 {
-                    setForce = false;
-                    _playerRigidbody
-                        .AddExplosionForce(1f, transform.position, 6.0f, 4.0f, ForceMode.Impulse);
-                    if (direciton.magnitude < 3f && attackType != 0)
-                    {
-                        _playerHealth.ApplyDamage(AttackDamage[attackType - 1]);
-                    }
-                }
-                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f)
-                {
-                    animator.SetBool(runName, false);
-                    animator.SetInteger(attackName, 0);
-                    attackType = Random.Range(1, AttackRange + 1);
-                    transform.LookAt(new Vector3(player.position.x, player.position.y, player.position.z));
+                    case AttackAnimationState.None:
+                        animator.SetBool(runName, false);
+                        animator.SetInteger(attackName, attackType);
+                        state = AttackAnimationState.Start;
+                        break;
+                    case AttackAnimationState.Start:
+                        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.1f)
+                            state = AttackAnimationState.Force;
+                        break;
+                    case AttackAnimationState.Force:
+                        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f)
+                        {
+                            _playerRigidbody
+                                .AddExplosionForce(1f, transform.position, 6.0f, 4.0f, ForceMode.Impulse);
+                            if (direciton.magnitude < 3f && attackType != 0)
+                            {
+                                Debug.Log($"Attack type: {attackType}");
+                                Debug.Log($"attack damage: {AttackDamage[attackType - 1]}");
+                        
+                                _playerHealth.ApplyDamage(AttackDamage[attackType - 1]);
+                            }
+
+                            state = AttackAnimationState.End;
+                        }
+                        break;
+                    case AttackAnimationState.End:
+
+                        if (Math.Abs(animator.GetCurrentAnimatorStateInfo(0).normalizedTime - 1f) < 0.05)
+                        {
+                            Debug.Log("end animation");
+
+                            animator.SetBool(runName, false);
+                            animator.SetInteger(attackName, 0);
+                            attackType = 0;
+                            state = AttackAnimationState.None;
+                        }
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
         }
