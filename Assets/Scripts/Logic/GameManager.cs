@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
@@ -38,15 +39,16 @@ public class GameManager : SceneLoader
         panel.SetActive(false);
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         panelText = panel.GetComponentInChildren<Text>();
-        foreach (var o in Resources.FindObjectsOfTypeAll(typeof(GameObject)))
+        foreach (var go in GameObject.FindGameObjectsWithTag("Spawner"))
         {
-            var go = (GameObject) o;
-            if (go.activeInHierarchy && go.name.Contains("Spawner"))
+            if (go.activeInHierarchy)
             {
+                Debug.Log(go.name);
                 var spawner = go.GetComponent<Spawner>();
                 spawners.Add(spawner);
             }
         }
+        Debug.Log(spawners.Count());
     }
 
     private bool isBossFight;
@@ -66,7 +68,7 @@ public class GameManager : SceneLoader
                 roundsSurvived++;
                 panelText.text = $"Round {roundsSurvived} Completed!";
                 foreach (var spawner in spawners)
-                    spawner.amount = roundsSurvived + 1;
+                    spawner.startAmount = roundsSurvived + 1;
                 panel.SetActive(true);
             }
             else if (roundsSurvived != currentRound && Input.GetButton("Fire2"))

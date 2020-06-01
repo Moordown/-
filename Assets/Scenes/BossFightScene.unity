@@ -191,7 +191,12 @@ PrefabInstance:
     - target: {fileID: 8829799669680467924, guid: 53143acc578cc1145ad1884030798ef1,
         type: 3}
       propertyPath: ActiveOnAwake
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8829799669680467927, guid: 53143acc578cc1145ad1884030798ef1,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53143acc578cc1145ad1884030798ef1, type: 3}
@@ -522,10 +527,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 6284902680484274504, guid: 00e09d4c1055e1e41a769393e35cb1bb,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6284902680484274519, guid: 00e09d4c1055e1e41a769393e35cb1bb,
         type: 3}
       propertyPath: ActiveOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00e09d4c1055e1e41a769393e35cb1bb, type: 3}

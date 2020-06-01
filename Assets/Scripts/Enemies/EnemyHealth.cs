@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
     
     private int texRef;
     private Animator anim;
-    // Start is called before the first frame update
+    
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -30,9 +30,9 @@ public class EnemyHealth : MonoBehaviour
         if (col.transform.tag == "bullet")
         {
             Destroy(col.gameObject);
+            Debug.Log(name);
             if (enemyMesh != null && health > 0)
             {
-                Debug.Log(name);
                 for (int i = 0; i < weakSpotNames.Length; i++)
                 {
                     if (name == weakSpotNames[i])

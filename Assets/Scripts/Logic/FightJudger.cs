@@ -21,6 +21,6 @@ public class FightJudger : MonoBehaviour
     IEnumerator DestroyObject(GameObject obj)
     {
         yield return new WaitForSeconds(140f/30);
-        Destroy(obj);
+        obj.SetActive(false);
     }
 }

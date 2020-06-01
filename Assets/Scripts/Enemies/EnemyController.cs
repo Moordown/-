@@ -85,7 +85,6 @@ public class EnemyController : MonoBehaviour
                         .AddExplosionForce(1f, transform.position, 6.0f, 4.0f, ForceMode.Impulse);
                     if (direciton.magnitude < 3f && attackType != 0)
                     {
-                        Debug.Log(attackType);
                         _playerHealth.ApplyDamage(AttackDamage[attackType - 1]);
                     }
                 }
@@ -94,6 +93,7 @@ public class EnemyController : MonoBehaviour
                     animator.SetBool(runName, false);
                     animator.SetInteger(attackName, 0);
                     attackType = Random.Range(1, AttackRange + 1);
+                    transform.LookAt(new Vector3(player.position.x, player.position.y, player.position.z));
                 }
             }
         }

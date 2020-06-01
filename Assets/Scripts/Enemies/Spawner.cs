@@ -1,113 +1,62 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class Enemy
-{
-    public GameObject go;
-    public bool active;
-    public Enemy(GameObject newGo, bool newBool)
-    {
-        go = newGo;
-        active = newBool;
-    }
-}
-
-public class Spawner : MonoBehaviour
+public class Spawner : Triggerable
 {
     public GameObject spawn;
-    public int amount = 1;
+    public int startAmount = 1;
     public float delaySpawn = 1;
     public bool spawnsDead;
 
-    private int getAmount;
-    private float timer;
-    private int spawned;
-    private int enemyDead;
-    private int maxSpawned = 100;
+    private int _getAmount;
+    private int _enemyDead;
+    private readonly int _maxSpawned = 100;
 
-    public List<Enemy> enemies = new List<Enemy>();
+    private readonly List<GameObject> _spawnObjects = new List<GameObject>();
 
     public void Start()
     {
         GameManager.RoundComplete += ResetRound;
-        ResetRound();
-        while (spawned < maxSpawned)
+        for (var i = 0; i < _maxSpawned; i++)
         {
-            spawned++;
-            GameObject instance = Instantiate(spawn, transform);
-            enemies.Add(new Enemy(instance, false));
+            var instance = Instantiate(spawn, transform);
+            _spawnObjects.Add(instance);
             instance.transform.parent = null;
             instance.transform.position = transform.position;
             instance.SetActive(false);
         }
         ResetRound();
     }
-    public void ResetRound()
+
+    private void ResetRound()
     {
         spawnsDead = false;
-        getAmount = Math.Min(amount, maxSpawned);
-        spawned = 0;
-        timer = 0;
-        enemyDead = 0;
+        _getAmount = Math.Min(startAmount, _maxSpawned);
+        _enemyDead = 0;
+        StartCoroutine(SpawnObjects());
     }
 
     void Update()
     {
-        //Increase timer per frame.
-        timer += Time.deltaTime;
-        //Do the spawn if our timer is larger than the delay spawn we set.
-        if (delaySpawn < timer)
+        if (_enemyDead == _getAmount)
+            spawnsDead = true;
+    }
+
+    private IEnumerator SpawnObjects()
+    {
+        for (var i = 0; i < _getAmount; i++)
         {
-            //And we haven’t reached the spawn amount.
-            if (spawned < getAmount)
-            {
-                //Reset our timer.
-                timer = 0;
-                //Set our bool to track the state of the enemy.
-                enemies[spawned].active = true;
-                //Set the enemy to be active.
-                enemies[spawned].go.SetActive(true);
-                //Get ready to set isKinematic.
-                StartCoroutine(SetKinematic(spawned));
-                //Increment the amount spawned count.
-                spawned++;
-            }
-
-            for (int i = enemies.Count - 1; i >= 0; i--)
-            {
-                //If another script disabled the object but we set them active above.
-                if (enemies[i].go.activeSelf == false && enemies[i].active == true)
-                {
-                    //Reset the spawn position and set our tracking bool that they are not active.
-                    enemies[i].go.transform.position = transform.position;
-                    enemies[i].active = false;
-                    enemyDead++;
-                }
-            }
-
-            if (enemyDead == getAmount)
-            {
-                spawnsDead = true;
-            }
+            _spawnObjects[i].SetActive(true);
+            yield return new WaitForSeconds(delaySpawn);
         }
     }
 
-    IEnumerator SetKinematic(int id)
+    public override void Trigger(TriggerAction action)
     {
-        //We set isKinematic at the start of the next frame to avoid confusion with other commands.
-        yield return null;
-        enemies[id].go.GetComponent<Rigidbody>().isKinematic = true;
-    }
-
-    private void OnDrawGizmos()
-    {
-        //Draw the wireframe mesh of what we intend to spawn in our editor.
-        Gizmos.color = Color.red;
-        if (spawn != null)
-        {
-            Gizmos.DrawWireMesh(spawn.GetComponent<MeshFilter>().sharedMesh, transform.position, spawn.transform.rotation, Vector3.one);
-        }
+        if (action == TriggerAction.Activate)
+            _enemyDead++;
     }
 }

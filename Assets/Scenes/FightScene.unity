@@ -364,6 +364,11 @@ PrefabInstance:
       propertyPath: EverySeconds
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3664836695523787300, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_Name
+      value: spawner
+      objectReference: {fileID: 0}
     - target: {fileID: 7107006626565030195, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: MaxRounds

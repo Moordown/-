@@ -214,14 +214,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5000
-  mutantMesh: {fileID: 1774749469720292412}
+  enemyMesh: {fileID: 1774749469720292412}
   texture:
   - {fileID: 2800000, guid: 2625c9ea2b24e194fb2d9b7bb5eb3267, type: 3}
   - {fileID: 2800000, guid: e57015a4c8220344cb787660f2a03fdc, type: 3}
   - {fileID: 2800000, guid: 8094f8b5657529f4f93abb9546c94bd3, type: 3}
   weakSpotNames:
-  - LeftHit
   - RightHit
+  - LeftHit
   - HeadHit
   weakSpotHealth: 6400000064000000f4010000
 --- !u!1 &939163428093162139
