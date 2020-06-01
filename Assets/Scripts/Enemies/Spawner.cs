@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Spawner : Triggerable
 {
@@ -51,12 +52,11 @@ public class Spawner : Triggerable
     
     private IEnumerator SpawnObjects()
     {
-        Debug.Log(_getAmount);
         for (var i = 0; i < _getAmount; i++)
         {
             spawned++;
-            Debug.Log($"spawn object: {i}");
-            _spawnObjects[i].transform.position = transform.position;
+            Debug.Log($"spawn object: {i+1} {Random.value}");
+            // _spawnObjects[i].transform.position = transform.position;
             _spawnObjects[i].SetActive(true);
             _spawnObjects[i].GetComponent<Collider>().enabled = true;
             _spawnObjects[i].GetComponent<EnemyHealth>().currentHealth =

@@ -749,6 +749,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3584009671400477584}
     m_Modifications:
+    - target: {fileID: 2816131300192706444, guid: d1129d451d571a546ad96f59137bee35,
+        type: 3}
+      propertyPath: Health
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816131300192706444, guid: d1129d451d571a546ad96f59137bee35,
+        type: 3}
+      propertyPath: weakSpotHealth.Array.data[0]
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5286580402908943475, guid: d1129d451d571a546ad96f59137bee35,
         type: 3}
       propertyPath: m_Name
@@ -758,6 +768,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535808592994539518, guid: d1129d451d571a546ad96f59137bee35,
+        type: 3}
+      propertyPath: AttackDamage.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535808592994539518, guid: d1129d451d571a546ad96f59137bee35,
+        type: 3}
+      propertyPath: AttackDamage.Array.data[1]
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6325750825640519996, guid: d1129d451d571a546ad96f59137bee35,
         type: 3}
@@ -1835,10 +1855,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3584009671400477584}
     m_Modifications:
+    - target: {fileID: 2816131300192706444, guid: d1129d451d571a546ad96f59137bee35,
+        type: 3}
+      propertyPath: Health
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816131300192706444, guid: d1129d451d571a546ad96f59137bee35,
+        type: 3}
+      propertyPath: weakSpotHealth.Array.data[0]
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5286580402908943475, guid: d1129d451d571a546ad96f59137bee35,
         type: 3}
       propertyPath: m_Name
       value: zombieSpawner (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535808592994539518, guid: d1129d451d571a546ad96f59137bee35,
+        type: 3}
+      propertyPath: AttackDamage.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535808592994539518, guid: d1129d451d571a546ad96f59137bee35,
+        type: 3}
+      propertyPath: AttackDamage.Array.data[1]
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6325750825640519996, guid: d1129d451d571a546ad96f59137bee35,
         type: 3}

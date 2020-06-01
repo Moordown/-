@@ -191,13 +191,28 @@ PrefabInstance:
     - target: {fileID: 7829640764973822306, guid: 53143acc578cc1145ad1884030798ef1,
         type: 3}
       propertyPath: Health
-      value: 10000
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 8829799669680467924, guid: 53143acc578cc1145ad1884030798ef1,
         type: 3}
       propertyPath: Judger
       value: 
       objectReference: {fileID: 1357092678}
+    - target: {fileID: 8829799669680467924, guid: 53143acc578cc1145ad1884030798ef1,
+        type: 3}
+      propertyPath: AttackDamage.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8829799669680467924, guid: 53143acc578cc1145ad1884030798ef1,
+        type: 3}
+      propertyPath: AttackDamage.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8829799669680467924, guid: 53143acc578cc1145ad1884030798ef1,
+        type: 3}
+      propertyPath: AttackDamage.Array.data[2]
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53143acc578cc1145ad1884030798ef1, type: 3}
 --- !u!114 &677194190 stripped
@@ -377,7 +392,7 @@ PrefabInstance:
     - target: {fileID: 3576004081264767326, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: Health
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3584009671400477584, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
@@ -527,7 +542,7 @@ PrefabInstance:
     - target: {fileID: 8079943467408308110, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: Health
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9015768722229474480, guid: a06d8063be2200546bbfe67605749648,
         type: 3}

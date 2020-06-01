@@ -13,6 +13,7 @@ public enum AttackAnimationState
     None
 }
 
+[RequireComponent(typeof(NavMeshObstacle))]
 [RequireComponent(typeof(Animator))]
 public class EnemyController : MonoBehaviour
 {
@@ -72,7 +73,6 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(state);
         if (!animator.GetBool(deadName))
         {
             if (direciton.magnitude > 3f && state == AttackAnimationState.None)
