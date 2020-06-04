@@ -1,0 +1,13 @@
+file_title             = a
+data_format            = float32
+map_projection         = Lat/Lon
+left_map_x             = 22.106001
+lower_map_y            = 36.044998
+right_map_x            = 23.341000
+upper_map_y            = 37.136002
+number_of_rows         = 1310
+number_of_columns      = 1483
+elev_m_unit            = meters
+elev_m_minimum         = -58
+elev_m_maximum         = 2369
+elev_m_missing_flag    = -9999

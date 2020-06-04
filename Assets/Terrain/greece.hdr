@@ -1,0 +1,13 @@
+file_title             = greece
+data_format            = float32
+map_projection         = Lat/Lon
+left_map_x             = 22.336000
+lower_map_y            = 36.376999
+right_map_x            = 22.521999
+upper_map_y            = 36.569000
+number_of_rows         = 231
+number_of_columns      = 224
+elev_m_unit            = meters
+elev_m_minimum         = -58
+elev_m_maximum         = 1056
+elev_m_missing_flag    = -9999
