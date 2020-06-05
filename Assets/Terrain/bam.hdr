@@ -1,0 +1,13 @@
+file_title             = bam
+data_format            = float32
+map_projection         = Lat/Lon
+left_map_x             = 101.167000
+lower_map_y            = 51.438999
+right_map_x            = 103.500000
+upper_map_y            = 51.969002
+number_of_rows         = 637
+number_of_columns      = 2801
+elev_m_unit            = meters
+elev_m_minimum         = 564
+elev_m_maximum         = 3222
+elev_m_missing_flag    = -9999

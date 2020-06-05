@@ -12,7 +12,7 @@ public class GeoDataLoader
 
     public TerrainHeightData terrainHeightData => terrain_data;
 
-    public bool load(string path, int resolution)
+    public bool load(string path, int resolution, int zOffset, int xOffset)
     {
         try
         {
@@ -53,20 +53,25 @@ public class GeoDataLoader
 
             terrain_data.height_map = new float[resolution, resolution];
 
-            float dx = terrain_data.x_range / resolution - 1;
-            float dz = terrain_data.z_range / resolution - 1;
+            // float dx = (terrain_data.x_range - xOffset) / readSideSize / resolution;
+            // float dz = (terrain_data.y_range - zOffset) / readSideSize / resolution;
+            //
+            // dx = 1;
+            // dz = 1;
 
+            Debug.Log($"{terrain_data.normalize_data.GetLength(0)} {terrain_data.normalize_data.GetLength(1)}");
+            
             for (int i = 0; i < resolution; i++)
             for (int j = 0; j < resolution; j++)
             {
-                terrain_data.height_map[i, j] = getHeight(i * dx, j * dz);
+                terrain_data.height_map[i, j] = terrain_data.normalize_data[xOffset + i, zOffset + j];
             }
 
             return true;
         }
         catch (Exception e)
         {
-            Debug.Log(e.Message);
+            Debug.Log($"{e.Message}:\n{e.StackTrace}");
             return false;
         }
     }
@@ -141,24 +146,18 @@ public class GeoDataLoader
         return tmp;
     }
 
-    float getHeight(float x, float z)
+    float getHeight(float x, float z, float dx, float dz)
     {
-        float height = 0.0f;
-
-        float dx = terrain_data.x_range / (terrain_data.numder_of_rows - 1);
-        float dz = terrain_data.z_range / (terrain_data.number_of_columns - 1);
-
         int i = (int) (x / dx);
         int j = (int) (z / dz);
 
-        if ((i >= terrain_data.numder_of_rows) || (j >= terrain_data.number_of_columns))
+        if (i >= terrain_data.numder_of_rows 
+            || j >= terrain_data.number_of_columns)
             return 0.0f;
 
         float dydx = (terrain_data.normalize_data[i + 1, j] - terrain_data.normalize_data[i, j]) / dx;
         float dydz = (terrain_data.normalize_data[i, j + 1] - terrain_data.normalize_data[i, j]) / dz;
 
-        height = terrain_data.normalize_data[i, j] + dydx * (x - i * dx) + dydz * (z - j * dz);
-
-        return height;
+        return terrain_data.normalize_data[i, j] + dydx * (x - i * dx) + dydz * (z - j * dz);
     }
 }

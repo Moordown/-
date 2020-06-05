@@ -39,7 +39,7 @@ public class TerrainLoader : MonoBehaviour
 
         loader = new GeoDataLoader();
 
-        if (!loader.load(path, terrain.terrainData.heightmapResolution))
+        if (!loader.load(path, terrain.terrainData.heightmapResolution, zOffset, xOffset))
             Debug.LogError("Geo data loading is failed");
         else
         {
@@ -76,9 +76,8 @@ public class TerrainLoader : MonoBehaviour
         {
             s += weights[k];
             if (!(s > r)) continue;
-            var instance = Instantiate(components[k]);
-            instance.transform.position = new Vector3(x, y, z);
-            // instance.transform.parent = transform;
+            var instance = Instantiate(components[k], transform, true);
+            instance.transform.Translate(new Vector3(x + zOffset, y, z), Space.Self);
             instance.SetActive(true);
             break;
         }
