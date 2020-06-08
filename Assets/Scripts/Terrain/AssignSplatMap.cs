@@ -7,6 +7,11 @@ public class AssignSplatMap : MonoBehaviour
 {
     void Start()
     {
+        MakeSlpatMap();
+    }
+
+    public void MakeSlpatMap()
+    {
         // Get the attached terrain component
         var terrain = GetComponent<Terrain>();
 
