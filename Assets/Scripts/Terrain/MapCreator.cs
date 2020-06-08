@@ -7,8 +7,14 @@ public class MapCreator : MonoBehaviour
 {
     public Terrain terrainPrefab;
     public int TerrainResolution;
+    public int TerrainHeight;
+    
     public int Width;
     public int Height;
+
+    public int WidthOffset;
+    public int HeightOffset;
+
     public string GeoDataPath;
 
     private TerrainLoader _terrainLoader;
@@ -23,8 +29,8 @@ public class MapCreator : MonoBehaviour
         _terrainLoader = terrainPrefab.GetComponent<TerrainLoader>();
         _addFloraToTerrain = terrainPrefab.GetComponent<AddFloraToTerrain>();
 
-        _terrainLoader.xOffset = 0;
-        _terrainLoader.yOffset = 0;
+        _terrainLoader.xOffset = TerrainResolution * HeightOffset;
+        _terrainLoader.yOffset = TerrainResolution * WidthOffset;
 
         GeoDataLoader.Load(GeoDataPath);
         CreateTiles();
@@ -41,18 +47,21 @@ public class MapCreator : MonoBehaviour
         {
             for (var j = 0; j < Width; j++)
             {
-                var terrainData = new TerrainData {heightmapResolution = TerrainResolution};
+                var terrainData = new TerrainData
+                {
+                    heightmapResolution = TerrainResolution + 1, 
+                    alphamapResolution = TerrainResolution,
+                    size = new Vector3(TerrainResolution, TerrainHeight, TerrainResolution)
+                };
                 terrainData.SetHeights(0, 0,
                     terrainPrefab.terrainData.GetHeights(0, 0, TerrainResolution, TerrainResolution));
-                terrainData.size = terrainPrefab.terrainData.size;
-                terrainData.alphamapResolution = TerrainResolution;
 
                 var terrain = Terrain.CreateTerrainGameObject(terrainData);
                 terrain.transform.SetParent(transform, false);
                 terrain.transform.Translate(new Vector3(j * TerrainResolution, 0, i * TerrainResolution), Space.Self);
 
                 Debug.Log(terrain.transform.position);
-                
+
                 CopyComponent(_terrainLoader, terrain);
                 CopyComponent(_initTerrainLayers, terrain);
                 CopyComponent(_assignSplatMap, terrain);
@@ -63,7 +72,7 @@ public class MapCreator : MonoBehaviour
                 terrains[i, j] = terrain.GetComponent<Terrain>();
             }
 
-            _terrainLoader.yOffset = 0;
+            _terrainLoader.yOffset = TerrainResolution * WidthOffset;
             _terrainLoader.xOffset += TerrainResolution;
         }
 
@@ -75,7 +84,7 @@ public class MapCreator : MonoBehaviour
                 var right = j == Width - 1 ? null : terrains[i, j + 1];
                 var top = i == Height - 1 ? null : terrains[i + 1, j];
                 var bottom = i == 0 ? null : terrains[i - 1, j];
-                
+
                 terrains[i, j].SetNeighbors(left, top, right, bottom);
             }
         }

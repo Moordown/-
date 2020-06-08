@@ -358,6 +358,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5870764859003827133, guid: 9519701a38f923b4197672e9e8bc913c,
+        type: 3}
+      propertyPath: GeoDataPath
+      value: Assets\Terrain\chine.hdr
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870764859003827133, guid: 9519701a38f923b4197672e9e8bc913c,
+        type: 3}
+      propertyPath: Width
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870764859003827133, guid: 9519701a38f923b4197672e9e8bc913c,
+        type: 3}
+      propertyPath: Height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870764859003827133, guid: 9519701a38f923b4197672e9e8bc913c,
+        type: 3}
+      propertyPath: HeightOffset
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870764859003827133, guid: 9519701a38f923b4197672e9e8bc913c,
+        type: 3}
+      propertyPath: TerrainResolution
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870764859003827133, guid: 9519701a38f923b4197672e9e8bc913c,
+        type: 3}
+      propertyPath: TerrainHeight
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870764859003827133, guid: 9519701a38f923b4197672e9e8bc913c,
+        type: 3}
+      propertyPath: WidthOffset
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5870764859003827138, guid: 9519701a38f923b4197672e9e8bc913c,
         type: 3}
       propertyPath: m_Name

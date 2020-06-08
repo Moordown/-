@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6251680969996949396}
   - component: {fileID: 2739437455486449253}
   m_Layer: 0
-  m_Name: Terrain
+  m_Name: terrain_512
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,6 @@ MonoBehaviour:
   path: Assets\Terrain\bam.hdr
   xOffset: 0
   yOffset: 0
-  resolution: 512
 --- !u!114 &8179073110109254622
 MonoBehaviour:
   m_ObjectHideFlags: 0

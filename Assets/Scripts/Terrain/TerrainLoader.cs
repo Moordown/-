@@ -8,7 +8,6 @@ public class TerrainLoader : MonoBehaviour
     public int xOffset;
     public int yOffset;
 
-    public int resolution;
     private Terrain terrain;
 
     void Start()

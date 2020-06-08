@@ -50,14 +50,16 @@ public static class GeoDataLoader
                 terrain_data.normalize_data[i, j] = level;
             }
 
-            terrain_data.height_map = new float[terrainHeightData.number_of_columns, terrain_data.numder_of_rows];
+            terrain_data.height_map = new float[terrain_data.number_of_columns, terrain_data.numder_of_rows];
 
-            float dx = terrain_data.x_range  / terrain_data.number_of_columns;
-            float dz = terrain_data.y_range / terrain_data.numder_of_rows;
+            float dx = terrain_data.x_range / terrain_data.number_of_columns;
+            float dz = terrain_data.z_range / terrain_data.numder_of_rows;
 
-            for (int i = 0; i < terrainHeightData.number_of_columns; i++)
-            for (int j = 0; j < terrainHeightData.numder_of_rows; j++)
-                terrain_data.height_map[i, j] = getHeight(i * dx, j * dz, dx, dz);
+            for (var i = 0; i < terrain_data.number_of_columns; i++)
+            for (var j = 0; j < terrain_data.numder_of_rows; j++)
+            {
+                terrain_data.height_map[i, j] = GetHeight(i * dx, j * dz, dx, dz);
+            }
         }
         catch (Exception e)
         {
@@ -135,7 +137,7 @@ public static class GeoDataLoader
         return tmp;
     }
 
-    static float getHeight(float x, float z, float dx, float dz)
+    private static float GetHeight(float x, float z, float dx, float dz)
     {
         int i = (int) (x / dx);
         int j = (int) (z / dz);
@@ -177,7 +179,7 @@ public static class GeoDataLoader
             }
         }
 
-        Debug.Log(flag);
+        Debug.Log($"{flag} - {xOffset} {yOffset}");
         
 
         return res;
