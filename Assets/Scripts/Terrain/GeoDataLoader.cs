@@ -4,15 +4,15 @@ using System.Globalization;
 using System.IO;
 using UnityEngine;
 
-public class GeoDataLoader
+public static class GeoDataLoader
 {
-    private TerrainHeightData terrain_data;
+    private static TerrainHeightData terrain_data;
 
-    public float[,] heightMap => terrain_data.height_map;
+    public static float[,] heightMap => terrain_data.height_map;
 
-    public TerrainHeightData terrainHeightData => terrain_data;
+    public static TerrainHeightData terrainHeightData => terrain_data;
 
-    public bool load(string path, int resolution, int zOffset, int xOffset)
+    public static void Load(string path)
     {
         try
         {
@@ -26,8 +26,7 @@ public class GeoDataLoader
                 header_params.Add(EraseSpaces(param[0]), EraseSpaces(param[1]));
             }
 
-            if (!ParseHeader(header_params, ref terrain_data))
-                return false;
+            if (!ParseHeader(header_params, ref terrain_data)) return;
 
             terrain_data.normalize_data = new float[terrain_data.numder_of_rows, terrain_data.number_of_columns];
 
@@ -51,32 +50,22 @@ public class GeoDataLoader
                 terrain_data.normalize_data[i, j] = level;
             }
 
-            terrain_data.height_map = new float[resolution, resolution];
+            terrain_data.height_map = new float[terrainHeightData.number_of_columns, terrain_data.numder_of_rows];
 
-            // float dx = (terrain_data.x_range - xOffset) / readSideSize / resolution;
-            // float dz = (terrain_data.y_range - zOffset) / readSideSize / resolution;
-            //
-            // dx = 1;
-            // dz = 1;
+            float dx = terrain_data.x_range  / terrain_data.number_of_columns;
+            float dz = terrain_data.y_range / terrain_data.numder_of_rows;
 
-            Debug.Log($"{terrain_data.normalize_data.GetLength(0)} {terrain_data.normalize_data.GetLength(1)}");
-            
-            for (int i = 0; i < resolution; i++)
-            for (int j = 0; j < resolution; j++)
-            {
-                terrain_data.height_map[i, j] = terrain_data.normalize_data[xOffset + i, zOffset + j];
-            }
-
-            return true;
+            for (int i = 0; i < terrainHeightData.number_of_columns; i++)
+            for (int j = 0; j < terrainHeightData.numder_of_rows; j++)
+                terrain_data.height_map[i, j] = getHeight(i * dx, j * dz, dx, dz);
         }
         catch (Exception e)
         {
             Debug.Log($"{e.Message}:\n{e.StackTrace}");
-            return false;
         }
     }
 
-    private bool ParseHeader(Dictionary<string, string> header_data,
+    private static bool ParseHeader(Dictionary<string, string> header_data,
         ref TerrainHeightData data)
     {
         try
@@ -133,7 +122,7 @@ public class GeoDataLoader
         return true;
     }
 
-    private string EraseSpaces(string str)
+    private static string EraseSpaces(string str)
     {
         string tmp = "";
 
@@ -146,12 +135,12 @@ public class GeoDataLoader
         return tmp;
     }
 
-    float getHeight(float x, float z, float dx, float dz)
+    static float getHeight(float x, float z, float dx, float dz)
     {
         int i = (int) (x / dx);
         int j = (int) (z / dz);
 
-        if (i >= terrain_data.numder_of_rows 
+        if (i >= terrain_data.numder_of_rows
             || j >= terrain_data.number_of_columns)
             return 0.0f;
 
@@ -159,5 +148,38 @@ public class GeoDataLoader
         float dydz = (terrain_data.normalize_data[i, j + 1] - terrain_data.normalize_data[i, j]) / dz;
 
         return terrain_data.normalize_data[i, j] + dydx * (x - i * dx) + dydz * (z - j * dz);
+    }
+
+    public static float[,] Slice(int resolution, int xOffset, int yOffset)
+    {
+        var res = new float[resolution, resolution];
+        var xDim = heightMap.GetLength(0);
+        var yDim = heightMap.GetLength(1);
+        
+        Debug.Log($"{xDim} {yDim} - {resolution} {xOffset} {yOffset}");
+        var flag = false;
+        
+        for (var i = 0; i < resolution; i++)
+        {
+            if (i + xOffset >= xDim)
+            {
+                flag = true;
+                break;
+            }
+            for (var j = 0; j < resolution; j++)
+            {
+                if (j + yOffset >= yDim)
+                {
+                    flag = true;
+                    break;
+                }
+                res[i, j] = heightMap[i + xOffset, j + yOffset];
+            }
+        }
+
+        Debug.Log(flag);
+        
+
+        return res;
     }
 }

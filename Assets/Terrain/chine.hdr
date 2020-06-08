@@ -1,0 +1,13 @@
+file_title             = chine
+data_format            = float32
+map_projection         = Lat/Lon
+left_map_x             = 100.780998
+lower_map_y            = 51.112999
+right_map_x            = 104.810997
+upper_map_y            = 52.219002
+number_of_rows         = 1328
+number_of_columns      = 4837
+elev_m_unit            = meters
+elev_m_minimum         = 436
+elev_m_maximum         = 3221
+elev_m_missing_flag    = -9999

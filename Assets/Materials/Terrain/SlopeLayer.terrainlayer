@@ -7,7 +7,7 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SlopeLayer
-  m_DiffuseTexture: {fileID: 2800000, guid: a526773d2075df94b999325112f7e9db, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 8d59bdda36accc2488f757430141b0b8, type: 3}
   m_NormalMapTexture: {fileID: 0}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 2, y: 2}

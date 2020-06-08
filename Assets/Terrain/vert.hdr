@@ -1,0 +1,13 @@
+file_title             = vert
+data_format            = float32
+map_projection         = Lat/Lon
+left_map_x             = 101.363998
+lower_map_y            = 50.340000
+right_map_x            = 102.371002
+upper_map_y            = 53.333000
+number_of_rows         = 3593
+number_of_columns      = 1209
+elev_m_unit            = meters
+elev_m_minimum         = 456
+elev_m_maximum         = 3218
+elev_m_missing_flag    = -9999

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3071522869784306404}
   - component: {fileID: 3071522869784306406}
   - component: {fileID: 8179073110109254622}
+  - component: {fileID: 6251680969996949396}
+  - component: {fileID: 2739437455486449253}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -91,35 +93,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: Assets\Terrain\bam.hdr
-  GrassMin: 0.1
-  GrassMax: 0.5
-  GrassComponents:
-  - {fileID: 2222111361404534124, guid: 88f2fd29f58b9734683512546acec310, type: 3}
-  - {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953, type: 3}
-  - {fileID: 4263922822445002727, guid: 3cdafb3c2f54d434894928d72d282874, type: 3}
-  - {fileID: 6239969156481229051, guid: b71b0f8d2f881c743a85228f3030d1cb, type: 3}
-  - {fileID: 7405846476849542632, guid: c6308cb7062fac34e8e50600086b12a1, type: 3}
-  - {fileID: 5202732821079448320, guid: cebfacc247a640945a2c30b442202fca, type: 3}
-  - {fileID: 5202732821079448320, guid: cebfacc247a640945a2c30b442202fca, type: 3}
-  - {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
-  - {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
-  - {fileID: 108507113624723981, guid: eebb56c82efbd8d4bb0eb6bd925a0e9d, type: 3}
-  GrassComponentWeights:
-  - 0.001
-  - 0.001
-  - 0.001
-  - 0.001
-  - 0.001
-  - 0.001
-  - 0.001
-  - 0.0005
-  - 0.0005
-  - 0.0005
-  xOffset: 200
-  zOffset: 0
-  xSize: 256
-  ySize: 40
-  zSize: 256
+  xOffset: 0
+  yOffset: 0
+  resolution: 512
 --- !u!114 &8179073110109254622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,8 +108,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1eb33884020dc74999125f99f08847e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GrassId: 2
-  GroundId: 1
-  DustId: 0
-  RockId: 3
-  SnowId: 4
+--- !u!114 &6251680969996949396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3071522869784306407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1cfd1cdb0f40a3aa494bb67cbb67d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GrassLayer: {fileID: 8574412962073106934, guid: d2e8599d7c968484590c37507d0fae3a,
+    type: 2}
+  GroundLayer: {fileID: 8574412962073106934, guid: 1c75731306920ea48a75c010617edcc4,
+    type: 2}
+  DustLayer: {fileID: 8574412962073106934, guid: 0524bf44744e2e44bbd3aae188a39c48,
+    type: 2}
+  RockLayer: {fileID: 8574412962073106934, guid: cf0b9b135a759db40835691a7a2c3195,
+    type: 2}
+  SnowLayer: {fileID: 8574412962073106934, guid: c4a94d67b8fc24949b25b144e05b7759,
+    type: 2}
+--- !u!114 &2739437455486449253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3071522869784306407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d8b21ba55824a4fb55d3acd6d413a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Components:
+  - {fileID: 2222111361404534124, guid: 88f2fd29f58b9734683512546acec310, type: 3}
+  - {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953, type: 3}
+  - {fileID: 6239969156481229051, guid: b71b0f8d2f881c743a85228f3030d1cb, type: 3}
+  - {fileID: 4263922822445002727, guid: 3cdafb3c2f54d434894928d72d282874, type: 3}
+  - {fileID: 4385080170328260021, guid: ff62b58c5a9ea164fa8ddf8038e10cd1, type: 3}
+  - {fileID: 5440707293445505367, guid: 494f6d43e170e9145bc7865d243ee00b, type: 3}
+  - {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
+  - {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
+  ComponentWeights:
+  - 0.008
+  - 0.008
+  - 0.001
+  - 0.001
+  - 0.001
+  - 0.001
+  - 0.0008
+  - 0.0005

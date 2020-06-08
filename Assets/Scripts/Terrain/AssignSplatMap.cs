@@ -5,22 +5,6 @@ using System.Linq; // used for Sum of array
 
 public class AssignSplatMap : MonoBehaviour
 {
-    public int GrassId;
-    public TerrainLayer GrassLayer;
-    
-    public int GroundId;
-    public TerrainLayer GroundLayer;
-    
-    public int DustId;
-    public TerrainLayer DustLayer;
-    
-    public int RockId;
-    public TerrainLayer RockLayer;
-    
-    public int SnowId;
-    public TerrainLayer SnowLayer;
-    
-    
     void Start()
     {
         // Get the attached terrain component
@@ -28,7 +12,6 @@ public class AssignSplatMap : MonoBehaviour
 
         // Get a reference to the terrain data
         var terrainData = terrain.terrainData;
-
         // Splatmap data is stored internally as a 3d array of floats, so declare a new empty array ready for your custom splatmap data:
         var splatmapData =
             new float[terrainData.alphamapWidth, terrainData.alphamapHeight, terrainData.alphamapLayers];
@@ -56,18 +39,19 @@ public class AssignSplatMap : MonoBehaviour
             // CHANGE THE RULES BELOW TO SET THE WEIGHTS OF EACH TEXTURE ON WHATEVER RULES YOU WANT
 
             // Texture[0] has constant influence
-            splatWeights[DustId] = 0.3f;
+            splatWeights[(int) LayerId.DustId] = 0.3f;
 
             // Texture[1] is stronger at lower altitudes
-            splatWeights[GroundId] = 1f - height;
-            splatWeights[SnowId] = Mathf.Clamp01(height * height);
+            splatWeights[(int) LayerId.GroundId] = 1f - height;
+            splatWeights[(int) LayerId.SnowId] = Mathf.Clamp01(height * height);
 
             // Texture[2] stronger on flatter terrain
             // Note "steepness" is unbounded, so we "normalise" it by dividing by the extent of heightmap height and scale factor
             // Subtract result from 1.0 to give greater weighting to flat surfaces
-            splatWeights[GrassId] = 1.0f - Mathf.Clamp01(steepness * steepness * 10f / terrainData.heightmapResolution);
-            
-            splatWeights[RockId] = 1.0f - splatWeights[GrassId];
+            splatWeights[(int) LayerId.GrassId] =
+                1.0f - Mathf.Clamp01(steepness * steepness * 10f / terrainData.heightmapResolution);
+
+            splatWeights[(int) LayerId.RockId] = 1.0f - splatWeights[(int) LayerId.GrassId];
 
             // // Texture[3] increases with height but only on surfaces facing positive Z axis 
             // splatWeights[SnowId] = Mathf.Clamp01(height * normal.z);
@@ -89,5 +73,6 @@ public class AssignSplatMap : MonoBehaviour
 
         // Finally assign the new splatmap to the terrainData:
         terrainData.SetAlphamaps(0, 0, splatmapData);
+        terrain.terrainData = terrainData;
     }
 }

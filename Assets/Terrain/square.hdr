@@ -1,0 +1,13 @@
+file_title             = square
+data_format            = float32
+map_projection         = Lat/Lon
+left_map_x             = 100.000275
+lower_map_y            = 52.007000
+right_map_x            = 104.000000
+upper_map_y            = 54.999001
+number_of_rows         = 3591
+number_of_columns      = 4801
+elev_m_unit            = meters
+elev_m_minimum         = 389
+elev_m_maximum         = 3157
+elev_m_missing_flag    = -9999
