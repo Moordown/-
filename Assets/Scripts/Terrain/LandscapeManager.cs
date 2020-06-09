@@ -9,7 +9,7 @@ public class LandscapeManager : MonoBehaviour
     public Terrain terrainPrefab;
     public int TerrainResolution;
     public int TerrainHeight;
-    
+
     public int Width;
     public int Height;
 
@@ -19,25 +19,19 @@ public class LandscapeManager : MonoBehaviour
     public string GeoDataPath;
 
     public float MoveSpeed;
-    
+
     private TerrainLoader _terrainLoader;
-    private InitTerrainLayers _initTerrainLayers;
-    private AssignSplatMap _assignSplatMap;
-    private AddFloraToTerrain _addFloraToTerrain;
     private GameObject[,] _terrains;
 
     public void Start()
     {
-        _assignSplatMap = terrainPrefab.GetComponent<AssignSplatMap>();
-        _initTerrainLayers = terrainPrefab.GetComponent<InitTerrainLayers>();
         _terrainLoader = terrainPrefab.GetComponent<TerrainLoader>();
-        _addFloraToTerrain = terrainPrefab.GetComponent<AddFloraToTerrain>();
 
         _terrainLoader.xOffset = TerrainResolution * HeightOffset;
         _terrainLoader.yOffset = TerrainResolution * WidthOffset;
 
         GeoDataLoader.Load(GeoDataPath);
-        
+
         _terrains = new GameObject[Height, Width];
         CreateTiles();
 
@@ -50,9 +44,9 @@ public class LandscapeManager : MonoBehaviour
         // Update position
         foreach (var terrain in _terrains)
         {
-            terrain.transform.Translate( MoveSpeed * Time.deltaTime * Vector3.left);
+            terrain.transform.Translate(MoveSpeed * Time.deltaTime * Vector3.left);
         }
-        
+
         // Update ring
         if ((_terrains[0, 0].transform.position - transform.position).magnitude > TerrainResolution)
         {
@@ -60,29 +54,47 @@ public class LandscapeManager : MonoBehaviour
         }
     }
 
+    private bool flag = false;
+    
     IEnumerator UpdateRing()
     {
-        var  lostTerrains = new List<Tuple<GameObject, int>>();
-        
         for (var i = 0; i < Height; i++)
         {
-            var loseTerrain = _terrains[i, 0];
-            loseTerrain.SetActive(false);
+            var rightTerrain = _terrains[i, 0];
             for (var j = 1; j < Width; j++)
                 _terrains[i, j - 1] = _terrains[i, j];
-            lostTerrains.Add(Tuple.Create(loseTerrain, i));
+            _terrains[i, Width - 1] = rightTerrain;
         }
+        
+        yield return new WaitForSeconds(0);
 
-        foreach (var (loseTerrain, i) in lostTerrains)
+        for(int i=0; i<Height; i++)
         {
-            _terrains[i, Width - 1] = CreateNewTerrainFrom(loseTerrain.GetComponent<Terrain>());
             _terrains[i, Width - 1].transform.SetParent(transform, false);
             _terrains[i, Width - 1].transform.Translate(
-                new Vector3((Width-1) * TerrainResolution, 0, i * TerrainResolution), Space.Self);
-            Destroy(loseTerrain);
+                new Vector3((Width) * TerrainResolution, 0, i * TerrainResolution), Space.Self);
+
+            if (Width > 1 && !flag)
+            {
+                var left = _terrains[i, Width - 1].GetComponent<Terrain>();
+                var right = _terrains[i, 0].GetComponent<Terrain>();
+                ArraySticher.Stich(left, right, TerrainResolution);
+
+                for (int j = 1; j < Width; j++)
+                {
+                    left = _terrains[i, j - 1].GetComponent<Terrain>();
+                    right = _terrains[i, j].GetComponent<Terrain>();
+                    ArraySticher.Stich(left, right, TerrainResolution);
+                }
+
+                flag = true;
+            }
+            
             yield return new WaitForSeconds(0);
         }
     }
+
+
 
     void CreateTiles()
     {
@@ -103,20 +115,6 @@ public class LandscapeManager : MonoBehaviour
             _terrainLoader.yOffset = TerrainResolution * WidthOffset;
             _terrainLoader.xOffset += TerrainResolution;
         }
-
-        // // TODO: 
-        // for (var i = 0; i < Height; i++)
-        // {
-        //     for (var j = 0; j < Width; j++)
-        //     {
-        //         var left = j == 0 ? null : _terrains[i, j - 1].GetComponent<Terrain>();
-        //         var right = j == Width - 1 ? null : _terrains[i, j + 1].GetComponent<Terrain>();
-        //         var top = i == Height - 1 ? null : _terrains[i + 1, j].GetComponent<Terrain>();
-        //         var bottom = i == 0 ? null : _terrains[i - 1, j].GetComponent<Terrain>();
-        //
-        //         _terrains[i, j].GetComponent<Terrain>().SetNeighbors(left, top, right, bottom);
-        //     }
-        // }
     }
 
     private GameObject CreateNewTerrainFrom(Terrain copyTerrain)
