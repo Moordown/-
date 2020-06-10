@@ -216,11 +216,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiddleLandscape
       objectReference: {fileID: 0}
-    - target: {fileID: 5490638766479253872, guid: 0c0c3c95b441ba244ab0fd4d8924e603,
-        type: 3}
-      propertyPath: MoveSpeed
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 5490638766479253873, guid: 0c0c3c95b441ba244ab0fd4d8924e603,
         type: 3}
       propertyPath: m_LocalPosition.x

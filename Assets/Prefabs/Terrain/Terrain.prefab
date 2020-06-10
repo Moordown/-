@@ -15,8 +15,10 @@ GameObject:
   - component: {fileID: 8179073110109254622}
   - component: {fileID: 6251680969996949396}
   - component: {fileID: 2739437455486449253}
+  - component: {fileID: 4356559327349609316}
+  - component: {fileID: -8801859208609541126}
   m_Layer: 0
-  m_Name: terrain_512
+  m_Name: terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,3 +161,31 @@ MonoBehaviour:
   - 0.001
   - 0.0008
   - 0.0005
+  RoadTop: 114
+  RoadBottom: 144
+--- !u!114 &4356559327349609316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3071522869784306407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf96e7b8cd3306a44af6ae8dfd7e4d17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EverySeconds: 0.01
+--- !u!114 &-8801859208609541126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3071522869784306407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e4eec3b05e46daa49dff39483028e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PushVector: {x: 5, y: 2, z: 0}

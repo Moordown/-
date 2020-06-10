@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611c737d0c53409b924225cd91d69d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PushVector: {x: 0, y: 0, z: 6.25}
+  PushVector: {x: -6.25, y: 0, z: 0}
 --- !u!1 &240294409851838864
 GameObject:
   m_ObjectHideFlags: 0

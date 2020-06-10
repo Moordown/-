@@ -8,20 +8,27 @@ public class AddFloraToTerrain : MonoBehaviour
     public GameObject[] Components;
     public float[] ComponentWeights;
 
+    public int RoadTop;
+    public int RoadBottom;
+
     public void Start()
     {
         var terrain = GetComponent<Terrain>();
         var data = terrain.terrainData;
+
         var splatMap = data.GetAlphamaps(0, 0, data.alphamapWidth, data.alphamapHeight);
         for (var alphaX = 0; alphaX < data.alphamapWidth; alphaX++)
-        for (var alphaY = 0; alphaY < data.alphamapHeight; alphaY++)
         {
-            if (MaxIndex(alphaY, alphaX, data.alphamapLayers, splatMap) != (int) LayerId.GrassId)
-                continue;
-    
-            var y = data.GetHeight(alphaX, alphaY);
-            if (Mathf.Abs(y)  < 0.01) continue;
-            TryAddInstance(alphaX, y, alphaY);
+            foreach (var (left, right) in new[] {(0, RoadTop), (RoadBottom, data.alphamapResolution)})
+            {
+                for (var alphaY = left; alphaY < right; alphaY++)
+                {
+                    if (MaxIndex(alphaY, alphaX, data.alphamapLayers, splatMap) != (int) LayerId.GrassId)
+                        continue;
+                    if (Mathf.Abs(data.GetHeight(alphaX, alphaY)) < 0.01) continue;
+                    TryAddInstance(alphaX, data.GetHeight(alphaX, alphaY), alphaY);
+                }
+            }
         }
     }
 
@@ -45,7 +52,7 @@ public class AddFloraToTerrain : MonoBehaviour
     {
         var s = 0f;
         var r = Random.value;
-        
+
         for (var k = 0; k < Components.Length; k++)
         {
             s += ComponentWeights[k];

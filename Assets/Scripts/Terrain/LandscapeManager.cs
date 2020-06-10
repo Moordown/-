@@ -19,13 +19,33 @@ public class LandscapeManager : MonoBehaviour
     public string GeoDataPath;
 
     public float MoveSpeed;
+    public float RoadLevel;
+    
+    public int StichDistance;
+    public int OddPathWidth;
 
     private TerrainLoader _terrainLoader;
+    private AssignSplatMap _assignSplatMap;
+    private AddFloraToTerrain _addFloraToTerrain;
+    private InitTerrainLayers _initTerrainLayers;
+    private OneByOneDieComponent _oneByOneDieComponent;
+    private PushInTied _pushInTied;
+    
     private GameObject[,] _terrains;
 
     public void Start()
     {
         _terrainLoader = terrainPrefab.GetComponent<TerrainLoader>();
+        _assignSplatMap = terrainPrefab.GetComponent<AssignSplatMap>();
+        _oneByOneDieComponent = terrainPrefab.GetComponent<OneByOneDieComponent>();
+        _pushInTied = terrainPrefab.GetComponent<PushInTied>();
+        
+        _addFloraToTerrain = terrainPrefab.GetComponent<AddFloraToTerrain>();
+        var (top, bottom) = TerrainManipulator.GetTopBottomBorderForRoad(TerrainResolution, OddPathWidth);
+        _addFloraToTerrain.RoadTop = top;
+        _addFloraToTerrain.RoadBottom = bottom;
+        
+        _initTerrainLayers = terrainPrefab.GetComponent<InitTerrainLayers>();
 
         _terrainLoader.xOffset = TerrainResolution * HeightOffset;
         _terrainLoader.yOffset = TerrainResolution * WidthOffset;
@@ -54,8 +74,6 @@ public class LandscapeManager : MonoBehaviour
         }
     }
 
-    private bool flag = false;
-    
     IEnumerator UpdateRing()
     {
         for (var i = 0; i < Height; i++)
@@ -73,27 +91,9 @@ public class LandscapeManager : MonoBehaviour
             _terrains[i, Width - 1].transform.SetParent(transform, false);
             _terrains[i, Width - 1].transform.Translate(
                 new Vector3((Width) * TerrainResolution, 0, i * TerrainResolution), Space.Self);
-
-            if (Width > 1 && !flag)
-            {
-                var left = _terrains[i, Width - 1].GetComponent<Terrain>();
-                var right = _terrains[i, 0].GetComponent<Terrain>();
-                ArraySticher.Stich(left, right, TerrainResolution);
-
-                for (int j = 1; j < Width; j++)
-                {
-                    left = _terrains[i, j - 1].GetComponent<Terrain>();
-                    right = _terrains[i, j].GetComponent<Terrain>();
-                    ArraySticher.Stich(left, right, TerrainResolution);
-                }
-
-                flag = true;
-            }
-            
             yield return new WaitForSeconds(0);
         }
     }
-
 
 
     void CreateTiles()
@@ -102,7 +102,7 @@ public class LandscapeManager : MonoBehaviour
         {
             for (var j = 0; j < Width; j++)
             {
-                var terrain = CreateNewTerrainFrom(terrainPrefab);
+                var terrain = CreateNewTerrainFrom();
 
                 terrain.transform.SetParent(transform, false);
                 terrain.transform.Translate(new Vector3(j * TerrainResolution, 0, i * TerrainResolution), Space.Self);
@@ -115,9 +115,11 @@ public class LandscapeManager : MonoBehaviour
             _terrainLoader.yOffset = TerrainResolution * WidthOffset;
             _terrainLoader.xOffset += TerrainResolution;
         }
-    }
 
-    private GameObject CreateNewTerrainFrom(Terrain copyTerrain)
+        StartCoroutine(PopulateTerrain());
+    }
+    
+    private GameObject CreateNewTerrainFrom()
     {
         var terrainData = new TerrainData
         {
@@ -128,15 +130,49 @@ public class LandscapeManager : MonoBehaviour
         terrainData.SetHeights(0, 0,
             terrainPrefab.terrainData.GetHeights(0, 0, TerrainResolution, TerrainResolution));
         var terrain = Terrain.CreateTerrainGameObject(terrainData);
-        Debug.Log(terrain.transform.position);
 
-        CopyComponent(copyTerrain.GetComponent<TerrainLoader>(), terrain);
-        CopyComponent(copyTerrain.GetComponent<InitTerrainLayers>(), terrain);
-        CopyComponent(copyTerrain.GetComponent<AssignSplatMap>(), terrain);
-        CopyComponent(copyTerrain.GetComponent<AddFloraToTerrain>(), terrain);
+        CopyComponent(_terrainLoader, terrain);
+        CopyComponent(_oneByOneDieComponent, terrain);
+        CopyComponent(_pushInTied, terrain);
+        
         return terrain;
     }
 
+
+    private IEnumerator PopulateTerrain()
+    {
+        // Видимо unity не успевает обработать terrain, поэтому мы берем задержку,
+        // пока он его создаст, чтобы потом сшить остальные terrain
+        yield return new WaitForSeconds(0);
+        StichTerrains();
+        foreach (var terrain in _terrains)
+        {
+            TerrainManipulator.MakePath(terrain.GetComponent<Terrain>(), TerrainResolution, OddPathWidth, RoadLevel);
+            CopyComponent(_initTerrainLayers, terrain);
+            CopyComponent(_assignSplatMap, terrain);
+            CopyComponent(_addFloraToTerrain, terrain);
+        }
+    }
+    
+    
+    private void StichTerrains()
+    {
+        if (Width <= 1) return;
+        for (var i = 0; i < Height; i++)
+        {
+            var left = _terrains[i, Width - 1].GetComponent<Terrain>();
+            var right = _terrains[i, 0].GetComponent<Terrain>();
+            TerrainManipulator.Stich(left, right, TerrainResolution, StichDistance);
+
+            for (var j = 1; j < Width; j++)
+            {
+                left = _terrains[i, j - 1].GetComponent<Terrain>();
+                right = _terrains[i, j].GetComponent<Terrain>();
+                TerrainManipulator.Stich(left, right, TerrainResolution, StichDistance);
+            }
+        }
+    }
+    
     private static void CopyComponent<T>(T original, GameObject destination) where T : Component
     {
         var type = original.GetType();

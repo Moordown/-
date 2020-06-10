@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5490638766479253873}
   - component: {fileID: 5490638766479253872}
   m_Layer: 0
-  m_Name: MapCreator 1
+  m_Name: MiddleLandscape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,3 +52,7 @@ MonoBehaviour:
   WidthOffset: 1
   HeightOffset: 2
   GeoDataPath: Assets\Terrain\chine.hdr
+  MoveSpeed: 100
+  RoadLevel: 0.1
+  StichDistance: 32
+  OddPathWidth: 31

@@ -254,4 +254,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611c737d0c53409b924225cd91d69d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PushVector: {x: 0, y: 0, z: 8}
+  PushVector: {x: -8, y: 0, z: 0}
