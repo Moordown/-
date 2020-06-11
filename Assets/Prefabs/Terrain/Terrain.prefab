@@ -109,6 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1eb33884020dc74999125f99f08847e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RoadTop: 0
+  RoadBottom: 0
 --- !u!114 &6251680969996949396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +132,8 @@ MonoBehaviour:
   RockLayer: {fileID: 8574412962073106934, guid: cf0b9b135a759db40835691a7a2c3195,
     type: 2}
   SnowLayer: {fileID: 8574412962073106934, guid: c4a94d67b8fc24949b25b144e05b7759,
+    type: 2}
+  RailwayLayer: {fileID: 8574412962073106934, guid: 8a23f9706c2ead74b9d3cf8f0f68a3b8,
     type: 2}
 --- !u!114 &2739437455486449253
 MonoBehaviour:
@@ -188,4 +192,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e4eec3b05e46daa49dff39483028e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PushVector: {x: 5, y: 2, z: 0}
+  PushVector: {x: -5, y: 0, z: 0}

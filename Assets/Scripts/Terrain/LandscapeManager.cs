@@ -41,10 +41,10 @@ public class LandscapeManager : MonoBehaviour
         _pushInTied = terrainPrefab.GetComponent<PushInTied>();
         
         _addFloraToTerrain = terrainPrefab.GetComponent<AddFloraToTerrain>();
-        var (top, bottom) = TerrainManipulator.GetTopBottomBorderForRoad(TerrainResolution, OddPathWidth);
-        _addFloraToTerrain.RoadTop = top;
-        _addFloraToTerrain.RoadBottom = bottom;
-        
+        var (top, bottom) = TerrainManipulator.GetSmoothedTopBottomBorderForRoad(TerrainResolution, OddPathWidth);
+        _assignSplatMap.RoadTop = _addFloraToTerrain.RoadTop = top;
+        _assignSplatMap.RoadBottom = _addFloraToTerrain.RoadBottom = bottom;
+
         _initTerrainLayers = terrainPrefab.GetComponent<InitTerrainLayers>();
 
         _terrainLoader.xOffset = TerrainResolution * HeightOffset;

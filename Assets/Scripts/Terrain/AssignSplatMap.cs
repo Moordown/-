@@ -5,6 +5,10 @@ using System.Linq; // used for Sum of array
 
 public class AssignSplatMap : MonoBehaviour
 {
+
+    public int RoadTop;
+    public int RoadBottom;
+
     void Start()
     {
         MakeSlpatMap();
@@ -24,6 +28,14 @@ public class AssignSplatMap : MonoBehaviour
         for (var y = 0; y < terrainData.alphamapHeight; y++)
         for (var x = 0; x < terrainData.alphamapWidth; x++)
         {
+            if (x > RoadTop && x < RoadBottom)
+            {
+                for (int i = 0; i < terrainData.alphamapLayers; i++)
+                    splatmapData[x, y, i] = 0;
+                splatmapData[x, y, (int) LayerId.RailwayId] = 1f;
+                continue;
+            }
+
             // Normalise x/y coordinates to range 0-1 
             var y_01 = y / (float) terrainData.alphamapHeight;
             var x_01 = x / (float) terrainData.alphamapWidth;

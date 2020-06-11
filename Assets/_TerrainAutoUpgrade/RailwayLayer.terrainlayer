@@ -6,7 +6,7 @@ TerrainLayer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: layer_TexturesCom_RockyDirt1_2.5x2.5_512_albedoTexturesCom_RockyDirt1_2.5x2.5_512_normala94091e7652eba76
+  m_Name: RailwayLayer
   m_DiffuseTexture: {fileID: 2800000, guid: a5273ef3894c46d47b30144c72da4676, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: 7f3e908b47959b54bbe9441c1dd1e87e, type: 3}
   m_MaskMapTexture: {fileID: 0}

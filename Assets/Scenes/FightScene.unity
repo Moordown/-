@@ -141,7 +141,7 @@ PrefabInstance:
     - target: {fileID: 5490638766479253873, guid: 0c0c3c95b441ba244ab0fd4d8924e603,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -128
+      value: -512
       objectReference: {fileID: 0}
     - target: {fileID: 5490638766479253873, guid: 0c0c3c95b441ba244ab0fd4d8924e603,
         type: 3}
@@ -202,6 +202,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2616839528662006129, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: AttackDamage.Array.data[1]
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3584009671400477584, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: m_LocalPosition.x
