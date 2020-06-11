@@ -6,37 +6,36 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PushOutTie : MonoBehaviour
 {
-    private Transform target;
     private Vector3 push;
 
-    private Rigidbody rigidbody;
+    private bool tieIsActive;
+    private Rigidbody _rigidbody;
 
     private void Awake()
     {
-        rigidbody = gameObject.GetComponent<Rigidbody>();
+        _rigidbody = gameObject.GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-        if (target is null) return;
-        rigidbody.AddForce(push, ForceMode.Impulse);
-        Debug.Log("use");
+        if (!tieIsActive) return;
+        _rigidbody.AddForce(push, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision other)
     {
         var tied = other.gameObject.GetComponent<PushOutTied>();
         if (tied is null) return;
-        Debug.Log("Enter pushouttied");
-        target = null;
+        tieIsActive = false;
+        Debug.Log("enter out tie");
     }
 
     private void OnCollisionExit(Collision other)
     {
         var tied = other.gameObject.GetComponent<PushOutTied>();
         if (tied is null) return;
-        target = tied.GetComponent<Transform>();
         push = tied.PushVector;
-        Debug.Log($"Exit pushouttied with: {push}");
+        tieIsActive = true;
+        Debug.Log("exit out tie");
     }
 }

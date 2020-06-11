@@ -177,9 +177,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackRange: 3
-  AttackDamage: 0a0000003200000019000000
+  AttackDamage: 0a0000001e00000012000000
   Judger: {fileID: 0}
-  ActiveOnAwake: 0
+  ActiveOnAwake: 1
 --- !u!195 &8829799669680467926
 NavMeshAgent:
   m_ObjectHideFlags: 0

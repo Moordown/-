@@ -25,7 +25,7 @@ public class Train : Triggerable
         var ret = new object();
         while (true)
         {
-            transform.position += Vector3.back * (TrainSpeed * Time.deltaTime);
+            transform.position += Vector3.right * (TrainSpeed * Time.deltaTime);
             yield return ret;
         }
     }

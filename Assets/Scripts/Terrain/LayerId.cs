@@ -4,5 +4,6 @@
     GroundId,
     DustId,
     RockId,
-    SnowId
+    SnowId,
+    RailwayId
 }

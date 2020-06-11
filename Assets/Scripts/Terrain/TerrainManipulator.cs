@@ -17,6 +17,14 @@ public static class TerrainManipulator
         var bottom = top + oddPathWidth - 1;
         return (top, bottom);
     }
+    
+    public static (int, int) GetSmoothedTopBottomBorderForRoad(int terrainResolution, int oddPathWidth)
+    {
+        var top = terrainResolution / 2 - oddPathWidth / 2 + 1;
+        var bottom = top + oddPathWidth - 1;
+        var smoothSide = (oddPathWidth - 1) / 3;
+        return (top + smoothSide, bottom - smoothSide);
+    }
 
     // TODO: добавить произвольную линию
     public static void MakePath(Terrain terrain, int terrainResolution, int oddPathWidth, float roadLevel)

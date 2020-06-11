@@ -19,7 +19,7 @@ public class Spawner : Triggerable
 
     public void Start()
     {
-        GameManager.RoundComplete += ResetRound;
+        TrainLevelManager.RoundComplete += ResetRound;
         _getAmount = 0;
         for (var i = 0; i < _maxSpawned; i++)
         {

@@ -158,29 +158,17 @@ public static class GeoDataLoader
         var xDim = heightMap.GetLength(0);
         var yDim = heightMap.GetLength(1);
         
-        Debug.Log($"{xDim} {yDim} - {resolution} {xOffset} {yOffset}");
-        var flag = false;
-        
         for (var i = 0; i < resolution; i++)
         {
             if (i + xOffset >= xDim)
-            {
-                flag = true;
                 break;
-            }
             for (var j = 0; j < resolution; j++)
             {
                 if (j + yOffset >= yDim)
-                {
-                    flag = true;
                     break;
-                }
                 res[i, j] = heightMap[i + xOffset, j + yOffset];
             }
         }
-
-        Debug.Log($"{flag} - {xOffset} {yOffset}");
-        
 
         return res;
     }

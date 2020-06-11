@@ -7,6 +7,7 @@ public class InitTerrainLayers : MonoBehaviour
     public TerrainLayer DustLayer;
     public TerrainLayer RockLayer;
     public TerrainLayer SnowLayer;
+    public TerrainLayer RailwayLayer;
 
     void Start()
     {
@@ -20,12 +21,13 @@ public class InitTerrainLayers : MonoBehaviour
     
     TerrainLayer[] CreateTerrainLayers()
     {
-        var terrainLayers = new TerrainLayer[5];
+        var terrainLayers = new TerrainLayer[6];
         terrainLayers[(int) LayerId.GrassId] = GrassLayer;
         terrainLayers[(int) LayerId.GroundId] = GroundLayer;
         terrainLayers[(int) LayerId.DustId] = DustLayer;
         terrainLayers[(int) LayerId.SnowId] = SnowLayer;
         terrainLayers[(int) LayerId.RockId] = RockLayer;
+        terrainLayers[(int) LayerId.RailwayId] = RailwayLayer;
 
         return terrainLayers;
     }

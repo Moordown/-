@@ -33,7 +33,7 @@ public class MoveAwayComponent : Triggerable
     {
         if (action != TriggerAction.Activate) return;
 
-        Debug.LogWarning("YES");
+        Debug.Log("YES");
         gameObject.GetComponent<MouseLook>().enabled = false;
         transform.parent = null;
         transform.rotation = Camera.transform.rotation;

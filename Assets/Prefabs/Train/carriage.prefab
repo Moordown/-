@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611c737d0c53409b924225cd91d69d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PushVector: {x: 0, y: 0, z: 7.5}
+  PushVector: {x: -7.5, y: 0, z: 0}
 --- !u!1 &6253284623548878643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,7 +1402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611c737d0c53409b924225cd91d69d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PushVector: {x: 0, y: 0, z: 7.5}
+  PushVector: {x: -7.5, y: 0, z: 0}
 --- !u!1 &6293840748275563493
 GameObject:
   m_ObjectHideFlags: 0

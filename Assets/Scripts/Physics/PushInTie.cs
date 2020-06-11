@@ -5,17 +5,17 @@ public class PushInTie : MonoBehaviour
     private Transform target;
     private Vector3 push;
 
-    private Rigidbody rigidbody;
+    private Rigidbody _rigidbody;
 
     private void Awake()
     {
-        rigidbody = gameObject.GetComponent<Rigidbody>();
+        _rigidbody = gameObject.GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
         if (target is null) return;
-        rigidbody.AddForce(push, ForceMode.Impulse);
+        _rigidbody.AddForce(push, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision other)

@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
-public class GameManager : SceneLoader
+public class TrainLevelManager : SceneLoader
 {
     public GameObject panel;
-    public GameObject mutant;
+    
+    public GameObject boss;
+    
     public AudioClip playerDeadSound;
 
     public CharacterMovement characterMovement;
@@ -81,7 +83,7 @@ public class GameManager : SceneLoader
                 else
                 {
                     isBossFight = true;
-                    mutant.SetActive(true);
+                    boss.SetActive(true);
                 }
             }
         }

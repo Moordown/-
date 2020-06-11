@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour
     private Transform player;
     private Animator animator;
     private int attackType;
-    private bool setForce = false;
+
     private Vector3 direciton;
 
     public bool ActiveOnAwake = false;
@@ -103,8 +103,8 @@ public class EnemyController : MonoBehaviour
                             if (direciton.magnitude < 3f && attackType != 0)
                             {
                                 _playerRigidbody.AddExplosionForce(
-                                    AttackDamage[attackType - 1] * _playerRigidbody.mass, transform.position,
-                                    6.0f, 4.0f, ForceMode.Impulse);
+                                    AttackDamage[attackType - 1], transform.position,
+                                    6.0f, 4.0f, ForceMode.VelocityChange);
                                 _playerHealth.ApplyDamage(AttackDamage[attackType - 1]);
                             }
                         }
