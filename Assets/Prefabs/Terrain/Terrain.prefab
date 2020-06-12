@@ -94,7 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79fd15062564fdeb71287ec398afb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: Assets\Terrain\bam.hdr
   xOffset: 0
   yOffset: 0
 --- !u!114 &8179073110109254622
@@ -165,6 +164,7 @@ MonoBehaviour:
   - 0.001
   - 0.0008
   - 0.0005
+  MinGrassValueForPopulation: 0.2
   RoadTop: 114
   RoadBottom: 144
 --- !u!114 &4356559327349609316

@@ -200,6 +200,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7672621081092102238, guid: 53143acc578cc1145ad1884030798ef1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672621081092102238, guid: 53143acc578cc1145ad1884030798ef1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7829640764973822306, guid: 53143acc578cc1145ad1884030798ef1,
         type: 3}
       propertyPath: Health
@@ -278,6 +288,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2003778014547069621, guid: e6709c209fad7874cb76469c0ecdd82b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003778014547069621, guid: e6709c209fad7874cb76469c0ecdd82b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3872514828808047859, guid: e6709c209fad7874cb76469c0ecdd82b,
         type: 3}
       propertyPath: healthText
@@ -348,6 +368,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7652922786396953265, guid: e6709c209fad7874cb76469c0ecdd82b,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 6144
+      objectReference: {fileID: 0}
     - target: {fileID: 8188805844708916140, guid: e6709c209fad7874cb76469c0ecdd82b,
         type: 3}
       propertyPath: ammoPanel
@@ -388,7 +413,32 @@ PrefabInstance:
     - target: {fileID: 5490638766479253872, guid: 0c0c3c95b441ba244ab0fd4d8924e603,
         type: 3}
       propertyPath: MoveSpeed
-      value: 20
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490638766479253872, guid: 0c0c3c95b441ba244ab0fd4d8924e603,
+        type: 3}
+      propertyPath: OddPathWidth
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490638766479253872, guid: 0c0c3c95b441ba244ab0fd4d8924e603,
+        type: 3}
+      propertyPath: ClearRoadOffset
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490638766479253872, guid: 0c0c3c95b441ba244ab0fd4d8924e603,
+        type: 3}
+      propertyPath: Height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490638766479253872, guid: 0c0c3c95b441ba244ab0fd4d8924e603,
+        type: 3}
+      propertyPath: HeightOffset
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490638766479253872, guid: 0c0c3c95b441ba244ab0fd4d8924e603,
+        type: 3}
+      propertyPath: TerrainResolution
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 5490638766479253873, guid: 0c0c3c95b441ba244ab0fd4d8924e603,
         type: 3}
@@ -454,6 +504,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 404577148639281677, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2616839528662006129, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: AttackDamage.Array.data[1]
@@ -523,6 +578,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TrainLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584009672173073018, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907909569970996445, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7107006626565030195, guid: a06d8063be2200546bbfe67605749648,
         type: 3}

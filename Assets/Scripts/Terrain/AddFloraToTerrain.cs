@@ -7,6 +7,7 @@ public class AddFloraToTerrain : MonoBehaviour
 {
     public GameObject[] Components;
     public float[] ComponentWeights;
+    public float MinGrassValueForPopulation;
 
     public int RoadTop;
     public int RoadBottom;
@@ -23,8 +24,9 @@ public class AddFloraToTerrain : MonoBehaviour
             {
                 for (var alphaY = left; alphaY < right; alphaY++)
                 {
-                    if (MaxIndex(alphaY, alphaX, data.alphamapLayers, splatMap) != (int) LayerId.GrassId)
-                        continue;
+                    if (splatMap[alphaX, alphaY, (int) LayerId.GrassId] < MinGrassValueForPopulation) continue;
+                        // if (MaxIndex(alphaY, alphaX, data.alphamapLayers, splatMap) != (int) LayerId.GrassId)
+                        // continue;
                     if (Mathf.Abs(data.GetHeight(alphaX, alphaY)) < 0.01) continue;
                     TryAddInstance(alphaX, data.GetHeight(alphaX, alphaY), alphaY);
                 }

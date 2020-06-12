@@ -60,15 +60,17 @@ public class AssignSplatMap : MonoBehaviour
 
             // Texture[1] is stronger at lower altitudes
             splatWeights[(int) LayerId.GroundId] = 1f - height;
-            splatWeights[(int) LayerId.SnowId] = Mathf.Clamp01(height * height);
+            // splatWeights[(int) LayerId.SnowId] = Mathf.Clamp01(height * height);
 
             // Texture[2] stronger on flatter terrain
             // Note "steepness" is unbounded, so we "normalise" it by dividing by the extent of heightmap height and scale factor
             // Subtract result from 1.0 to give greater weighting to flat surfaces
             splatWeights[(int) LayerId.GrassId] =
-                1.0f - Mathf.Clamp01(steepness * steepness * 10f / terrainData.heightmapResolution);
+                1.0f - Mathf.Clamp01(steepness * steepness * 10f / terrainData.heightmapResolution) 
+                + Mathf.Abs(normal.z) / 2;
 
-            splatWeights[(int) LayerId.RockId] = 1.0f - splatWeights[(int) LayerId.GrassId];
+            // splatWeights[(int) LayerId.RockId] = 1.0f - splatWeights[(int) LayerId.GrassId];
+            splatWeights[(int) LayerId.RockId] = 2 * height;
 
             // // Texture[3] increases with height but only on surfaces facing positive Z axis 
             // splatWeights[SnowId] = Mathf.Clamp01(height * normal.z);

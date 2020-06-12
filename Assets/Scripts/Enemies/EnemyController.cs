@@ -53,6 +53,7 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(state);
         if (!animator.GetBool(deadName))
         {
             direciton = player.position - transform.position;
@@ -65,7 +66,7 @@ public class EnemyController : MonoBehaviour
             agent.isStopped = false;
             agent.SetDestination(player.position);
             if (direciton.magnitude > 2f)
-                transform.LookAt(new Vector3(player.position.x, player.position.y, player.position.z));
+                transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
         }
         else
         {
@@ -96,8 +97,10 @@ public class EnemyController : MonoBehaviour
                         // TODO: эта тупая анимация может потом по второму кругу пойти, или стейтмашина
                         // TODO: рассинхронизируется с тем, что мы показываем.
                         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.1f
-                           && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.3f)
+                           && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.45f)
                             state = AttackAnimationState.Force;
+                        else if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.45f)
+                            state = AttackAnimationState.None;
                         break;
                     case AttackAnimationState.Force:
                         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f)

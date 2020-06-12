@@ -23,6 +23,7 @@ public class LandscapeManager : MonoBehaviour
     
     public int StichDistance;
     public int OddPathWidth;
+    public int ClearRoadOffset;
 
     private TerrainLoader _terrainLoader;
     private AssignSplatMap _assignSplatMap;
@@ -42,8 +43,10 @@ public class LandscapeManager : MonoBehaviour
         
         _addFloraToTerrain = terrainPrefab.GetComponent<AddFloraToTerrain>();
         var (top, bottom) = TerrainManipulator.GetSmoothedTopBottomBorderForRoad(TerrainResolution, OddPathWidth);
-        _assignSplatMap.RoadTop = _addFloraToTerrain.RoadTop = top;
-        _assignSplatMap.RoadBottom = _addFloraToTerrain.RoadBottom = bottom;
+        _assignSplatMap.RoadTop = top;
+        _addFloraToTerrain.RoadTop = top - ClearRoadOffset;
+        _assignSplatMap.RoadBottom = bottom;
+        _addFloraToTerrain.RoadBottom = bottom + ClearRoadOffset;
 
         _initTerrainLayers = terrainPrefab.GetComponent<InitTerrainLayers>();
 
