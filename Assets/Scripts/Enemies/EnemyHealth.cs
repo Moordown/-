@@ -27,31 +27,36 @@ public class EnemyHealth : MonoBehaviour
             anim.SetInteger(EnemyController.attackName, 0);
         }
     }
-    public void ReceiveCollision(ref Collision  col, ref string name)
+    public void ReceiveCollision(ref Collision  col, ref string weakPointName)
     {
-        if (col.transform.tag == "bullet")
+        foreach (var contactPoint in col.contacts)
         {
-            Destroy(col.gameObject);
-            Debug.Log(name);
-            if (enemyMesh != null && currentHealth > 0)
+            Debug.Log($"Try hit weak: {weakPointName} from {contactPoint.otherCollider.gameObject.name}");
+            var damageable = contactPoint.otherCollider.gameObject.GetComponent<Damageable>();
+            if (damageable is null) return;
+
+            contactPoint.otherCollider.gameObject.SetActive(false);
+
+            if (enemyMesh == null || currentHealth <= 0) return;
+            for (var i = 0; i < weakSpotNames.Length; i++)
             {
-                for (int i = 0; i < weakSpotNames.Length; i++)
-                {
-                    if (name == weakSpotNames[i])
-                    {
-                        currentHealth -= weakSpotHealth[i];
-                        StartCoroutine(HitFlash(i));
-                    }
-                }
+                if (weakPointName != weakSpotNames[i]) continue;
+                currentHealth -= weakSpotHealth[i];
+                StartCoroutine(HitFlash(i));
             }
+            Debug.Log($"hit weak: {weakPointName} from {contactPoint.otherCollider.gameObject.name}");
         }
     }
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("bullet"))
+        foreach (var contactPoint in other.contacts)
         {
-            currentHealth -= 1;
-            Destroy(other.gameObject);
+            var otherGameObject = contactPoint.otherCollider.gameObject;
+            var damageable = otherGameObject.GetComponent<Damageable>();
+            if (damageable is null) continue;
+            currentHealth -= damageable.damageValue;
+            Debug.Log($"{currentHealth} after {contactPoint.otherCollider.transform.name} (-{damageable.damageValue})");
+            otherGameObject.SetActive(false);
         }
     }
     private IEnumerator HitFlash(int num)
