@@ -18,7 +18,10 @@ public enum AttackAnimationState
 public class EnemyController : MonoBehaviour
 {
     public int AttackRange = 3;
+    
     public int[] AttackDamage;
+    public float[] AttackImpulse;
+    
     public FightJudger Judger;
 
     private NavMeshAgent agent;
@@ -103,7 +106,7 @@ public class EnemyController : MonoBehaviour
                             if (direciton.magnitude < 3f && attackType != 0)
                             {
                                 _playerRigidbody.AddExplosionForce(
-                                    AttackDamage[attackType - 1], transform.position,
+                                    AttackImpulse[attackType - 1], transform.position,
                                     6.0f, 4.0f, ForceMode.VelocityChange);
                                 _playerHealth.ApplyDamage(AttackDamage[attackType - 1]);
                             }

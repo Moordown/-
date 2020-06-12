@@ -1848,7 +1848,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackRange: 2
-  AttackDamage: 0100000001000000
+  AttackDamage: 0500000002000000
+  AttackImpulse:
+  - 2
+  - 1
   Judger: {fileID: 0}
   ActiveOnAwake: 1
 --- !u!114 &8879466545391828039
