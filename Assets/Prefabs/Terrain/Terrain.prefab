@@ -108,8 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1eb33884020dc74999125f99f08847e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoadTop: 0
-  RoadBottom: 0
+  RoadTop: 124
+  RoadBottom: 134
 --- !u!114 &6251680969996949396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,8 +165,8 @@ MonoBehaviour:
   - 0.0008
   - 0.0005
   MinGrassValueForPopulation: 0.2
-  RoadTop: 114
-  RoadBottom: 144
+  RoadTop: 124
+  RoadBottom: 134
 --- !u!114 &4356559327349609316
 MonoBehaviour:
   m_ObjectHideFlags: 0

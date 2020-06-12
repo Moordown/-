@@ -19,6 +19,7 @@ public class FightJudger : MonoBehaviour
     {
         if (set.TryGetValue(obj, out var value) && value) return;
         set[obj] = true;
+        Debug.Log("Object dead");
         trigger.TriggerTargets();
         StartCoroutine(InactivateObject(obj));
     }
