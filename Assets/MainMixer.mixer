@@ -105,6 +105,8 @@ AudioMixerController:
     name: currentVolumeForBackgroundEffects
   - guid: 5d2dd7307377e7445966766339418a3c
     name: currentVolumeForEffects
+  - guid: 4f390a957318c314e8f4af887e874fcc
+    name: currentVolumeForMusic
   m_AudioMixerGroupViews:
   - guids:
     - efc263e26fdbd0c4a9392888ce268ca8

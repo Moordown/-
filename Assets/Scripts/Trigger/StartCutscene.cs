@@ -12,6 +12,7 @@ public class StartCutscene : SceneLoader
 
     public string NewSceneName;
     public float SoundDropSpeed;
+    public float TransitionWaitTime = 5.0f;
 
     public GameObject FightInterface;
 
@@ -34,19 +35,20 @@ public class StartCutscene : SceneLoader
         Train.Trigger(TriggerAction.Activate);
         yield return new object();
 
-        StartCoroutine(TurnOffSound());
-        yield return new WaitForSeconds(5.0f);
+        StartCoroutine(TurnOffSound("currentVolumeForBackgroundEffects"));
+        StartCoroutine(TurnOffSound("currentVolumeForMusic"));
+        yield return new WaitForSeconds(TransitionWaitTime);
         StartLoading(NewSceneName);
     }
 
-    private IEnumerator TurnOffSound()
+    private IEnumerator TurnOffSound(string soundParameter)
     {
         float value;
-        while (mixer.GetFloat("currentVolumeForBackgroundEffects", out value) && Math.Abs(value + 80) > 0.01)
+        while (mixer.GetFloat(soundParameter, out value) && Math.Abs(value + 80) > 0.01)
         {
             value -= SoundDropSpeed * Time.deltaTime;
             value = Mathf.Clamp(value, -80f, 20);
-            yield return mixer.SetFloat("currentVolumeForBackgroundEffects", value);
+            yield return mixer.SetFloat(soundParameter, value);
         }
     }
 }

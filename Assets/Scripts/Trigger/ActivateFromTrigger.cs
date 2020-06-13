@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
- 
+
 public class ActivateFromTrigger : Triggerable
 {
-    public Transform parentObject;
-    private bool activateSelf = false;
+    public bool activateSelf = false;
     private void Awake()
     {
         gameObject.SetActive(activateSelf);
-        transform.SetParent(parentObject, true);
     }
 
     public override void Trigger(TriggerAction action)
