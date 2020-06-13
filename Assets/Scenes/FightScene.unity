@@ -681,6 +681,17 @@ PrefabInstance:
       propertyPath: NewSceneName
       value: RailwayStationScene
       objectReference: {fileID: 0}
+    - target: {fileID: 1964082891028972755, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: FightInterface
+      value: 
+      objectReference: {fileID: 3584009672427671078}
+    - target: {fileID: 1964082891028972755, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: Mixer
+      value: 
+      objectReference: {fileID: 24100000, guid: ebd61aa4f986a12408ff496d85870dd0,
+        type: 2}
     - target: {fileID: 2395808109869668554, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -821,6 +832,17 @@ PrefabInstance:
       propertyPath: MaxRounds
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7107006626565030195, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: Mixer
+      value: 
+      objectReference: {fileID: 24100000, guid: ebd61aa4f986a12408ff496d85870dd0,
+        type: 2}
+    - target: {fileID: 7107006626565030195, guid: a06d8063be2200546bbfe67605749648,
+        type: 3}
+      propertyPath: FightInterface
+      value: 
+      objectReference: {fileID: 3584009672427671078}
     - target: {fileID: 8079943467408308110, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: Health
@@ -834,3 +856,9 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3231997455109444191, guid: a06d8063be2200546bbfe67605749648, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a06d8063be2200546bbfe67605749648, type: 3}
+--- !u!1 &3584009672427671078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2377274585608780565, guid: a06d8063be2200546bbfe67605749648,
+    type: 3}
+  m_PrefabInstance: {fileID: 3584009672427671077}
+  m_PrefabAsset: {fileID: 0}

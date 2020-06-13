@@ -8,11 +8,11 @@ using UnityEngine.UI;
 public class TrainLevelManager : SceneLoader
 {
     public GameObject panel;
-    
     public GameObject boss;
     
     public AudioClip playerDeadSound;
 
+    public GameObject FightInterface;
     public CharacterMovement characterMovement;
     public MouseLook mouseLock;
 
@@ -28,13 +28,13 @@ public class TrainLevelManager : SceneLoader
     private AudioSource source;
     private bool isPlayerDead;
 
-    public string MenuSceneName;
     public List<Spawner> spawners;
 
     void Start()
     {
         isPlayerDead = false;
         source = gameObject.GetComponent<AudioSource>();
+
         spawners = new List<Spawner>();
         
         Time.timeScale = 1;
@@ -91,7 +91,8 @@ public class TrainLevelManager : SceneLoader
         {
             if (Input.GetButton("Fire2"))
             {
-                StartLoading(MenuSceneName);
+                FightInterface.SetActive(false);
+                StartLoading(Config.MenuSceneName);
             }
             else
             {

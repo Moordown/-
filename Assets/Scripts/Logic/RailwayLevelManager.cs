@@ -1,26 +1,48 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
-public class RailwayLevelManager : Triggerable
+public class RailwayLevelManager : SceneLoader
 {
-    private AudioSource AudioSource;
-    public AudioClip mainTheme;
-    public AudioClip runningTheme;
+    public AudioClip playerDeadSound;
+    public GameObject panel;
+    public GameObject FightInterface;
 
+    public CharacterMovement characterMovement;
+    public MouseLook mouseLock;
+    
+    public PlayerHealth PlayerHealth;
+    private AudioSource source;
+    private Text panelText;
     void Start()
     {
-        AudioSource = GetComponent<AudioSource>();
-        AudioSource.loop = true;
-        AudioSource.PlayOneShot(mainTheme);
+        source = GetComponent<AudioSource>();
+        panelText = panel.GetComponentInChildren<Text>();
     }
 
-
-    public override void Trigger(TriggerAction action)
+    private bool isPlayerDead;
+    void Update()
     {
-        AudioSource.Stop();
-        if (action == TriggerAction.Activate)
-            AudioSource.PlayOneShot(mainTheme);
-        else if (action == TriggerAction.Deactivate)
-            AudioSource.PlayOneShot(runningTheme);
+        if (PlayerHealth.health <= 0)
+        {
+            if (Input.GetButton("Fire2"))
+            {
+                FightInterface.SetActive(false);
+                StartLoading(Config.MenuSceneName);
+            }
+            else
+            {
+                if (!isPlayerDead)
+                    source.PlayOneShot(playerDeadSound);
+                isPlayerDead = true;
+                panel.SetActive(true);
+                PlayerHealth.SetDangerEffect();
+
+                panelText.text = $"Вы умерли из-за того что упали с большой высоты, лол (:";
+                characterMovement.enabled = false;
+                mouseLock.enabled = false;
+            }
+        }
     }
 }
