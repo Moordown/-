@@ -5179,7 +5179,7 @@ MonoBehaviour:
   mixer: {fileID: 24100000, guid: ebd61aa4f986a12408ff496d85870dd0, type: 2}
   NewSceneName: FightScene
   SoundDropSpeed: 1.5
-  TransitionWaitTime: 1
+  TransitionWaitTime: 10
   FightInterface: {fileID: 376854181}
 --- !u!65 &891678893
 BoxCollider:
@@ -6158,7 +6158,7 @@ MonoBehaviour:
   TriggerAction: 1
   targets:
   - {fileID: 1558118500}
-  - {fileID: 0}
+  - {fileID: 1974358176}
   - {fileID: 601438850}
   - {fileID: 1110432181}
   - {fileID: 1851471405}
@@ -6608,7 +6608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeOutNotifier: {fileID: 1558118499}
-  SecondsForTimeOut: 11
+  SecondsForTimeOut: 21
   TimePanel: {fileID: 376854180}
 --- !u!4 &1851471406
 Transform:
