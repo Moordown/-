@@ -479,5 +479,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 7812452906596950639, guid: 99b9db2da50290d4b8950e6666a780ee,
+        type: 3}
+      propertyPath: nextScene
+      value: RailwayStationScene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99b9db2da50290d4b8950e6666a780ee, type: 3}

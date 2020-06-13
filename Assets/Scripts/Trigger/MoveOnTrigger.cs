@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Train : Triggerable
+public class MoveOnTrigger : Triggerable
 {
     public float TrainSpeed;
+    public Vector3 Direction = Vector3.right;
 
     private IEnumerator trainMoveCorutine;
 
@@ -25,7 +26,7 @@ public class Train : Triggerable
         var ret = new object();
         while (true)
         {
-            transform.position += Vector3.right * (TrainSpeed * Time.deltaTime);
+            transform.position += Direction * (TrainSpeed * Time.deltaTime);
             yield return ret;
         }
     }

@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    
     public Animator sceneTransitionAnimator;
 
     protected void StartLoading(string sceneName)
@@ -14,6 +13,7 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator LoadNewScene(string sceneName)
     {
+        Debug.Log("Loading new scene");
         sceneTransitionAnimator.Play("end");
         yield return new WaitForSeconds(1.5f);
         Cursor.lockState = CursorLockMode.None;

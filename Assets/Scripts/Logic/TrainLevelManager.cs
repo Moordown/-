@@ -50,7 +50,7 @@ public class TrainLevelManager : SceneLoader
                 spawners.Add(spawner);
             }
         }
-        Debug.Log(spawners.Count());
+        Debug.Log($"Spawner counts: {spawners.Count}");
     }
 
     private bool isBossFight;

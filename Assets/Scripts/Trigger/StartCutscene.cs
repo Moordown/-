@@ -10,22 +10,23 @@ public class StartCutscene : SceneLoader
     public GameObject Player;
     public AudioMixer mixer;
 
-    public string MenuSceneName;
+    public string NewSceneName;
     public float SoundDropSpeed;
 
     public GameObject FightInterface;
 
     public void OnCollisionEnter(Collision other)
     {
-        if (!other.gameObject.CompareTag("Player")) return;
+        Debug.Log($"Enter to startCutscene: {other.gameObject.name} {other.gameObject.CompareTag("Player")}");
+        if (other.gameObject != Player) return;
         StartCoroutine(RunCutscene(.5f));
     }
-    
+
     IEnumerator RunCutscene(float time)
     {
         FightInterface.SetActive(false);
         yield return new WaitForSeconds(time);
-        
+
         Camera.Trigger(TriggerAction.Activate);
         yield return new object();
 
@@ -35,7 +36,7 @@ public class StartCutscene : SceneLoader
 
         StartCoroutine(TurnOffSound());
         yield return new WaitForSeconds(5.0f);
-        StartLoading(MenuSceneName);
+        StartLoading(NewSceneName);
     }
 
     private IEnumerator TurnOffSound()

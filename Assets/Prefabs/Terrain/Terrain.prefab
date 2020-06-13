@@ -155,6 +155,8 @@ MonoBehaviour:
   - {fileID: 5440707293445505367, guid: 494f6d43e170e9145bc7865d243ee00b, type: 3}
   - {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
   - {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
+  - {fileID: 8903058273634794869, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
+  - {fileID: 3356751432538110193, guid: ffbddc4ef9676cc419e81e06aaa836d8, type: 3}
   ComponentWeights:
   - 0.008
   - 0.008
@@ -164,6 +166,8 @@ MonoBehaviour:
   - 0.001
   - 0.0008
   - 0.0005
+  - 0.1
+  - 0.1
   MinGrassValueForPopulation: 0.2
   RoadTop: 124
   RoadBottom: 134

@@ -7,6 +7,7 @@ using UnityEngine;
 public static class GeoDataLoader
 {
     private static TerrainHeightData terrain_data;
+    public static bool IsLoaded; 
 
     public static float[,] heightMap => terrain_data.height_map;
 
@@ -60,10 +61,13 @@ public static class GeoDataLoader
             {
                 terrain_data.height_map[i, j] = GetHeight(i * dx, j * dz, dx, dz);
             }
+
+            IsLoaded = true;
         }
         catch (Exception e)
         {
             Debug.Log($"{e.Message}:\n{e.StackTrace}");
+            IsLoaded = false;
         }
     }
 

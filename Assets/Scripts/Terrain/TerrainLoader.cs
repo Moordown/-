@@ -12,7 +12,10 @@ public class TerrainLoader : MonoBehaviour
     void Start()
     {
         terrain = gameObject.GetComponent<Terrain>();
-        terrain.terrainData.SetHeights(0, 0,
-            GeoDataLoader.Slice(terrain.terrainData.heightmapResolution - 1, xOffset, yOffset));
+        if (GeoDataLoader.IsLoaded)
+        {
+            terrain.terrainData.SetHeights(0, 0,
+                GeoDataLoader.Slice(terrain.terrainData.heightmapResolution - 1, xOffset, yOffset));
+        }
     }
 }

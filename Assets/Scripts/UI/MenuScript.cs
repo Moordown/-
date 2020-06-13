@@ -3,11 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : SceneLoader
 {
-    public string fightScene;
+    public string nextScene;
     
     public void StartGame()
     {
-        StartLoading(fightScene);
+        StartLoading(nextScene);
     }
 
     public void ExitGame()

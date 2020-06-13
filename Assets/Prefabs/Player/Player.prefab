@@ -344,7 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotSound: {fileID: 8300000, guid: 699a21ca60012784c9805c6473120785, type: 3}
   punchSound: {fileID: 8300000, guid: d11217810c791464f940f0d0d4572513, type: 3}
-  ammoAmount: 1
+  ammoAmount: 10
   meleeRepeatDelay: 0.25
   projectile: {fileID: 6137801148904001709, guid: 2f90a3349f7ceba40aaff65388d68187,
     type: 3}
