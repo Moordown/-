@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
-public class RailwayLevelManager : SceneLoader
+public class RailwayLevelManager : LevelManager
 {
     public AudioClip playerDeadSound;
     public GameObject panel;

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
-public class TrainLevelManager : SceneLoader
+public class TrainLevelManager : LevelManager
 {
     public GameObject panel;
     public GameObject boss;

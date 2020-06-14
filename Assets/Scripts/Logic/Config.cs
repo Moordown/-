@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
 
+
+// TODO: переделать на prefab к которому давать доступ
 public static class Config
 {
     public static Dictionary<string, float> mixerValues = new Dictionary<string, float>
@@ -11,8 +15,4 @@ public static class Config
     public static string MenuSceneName = "MenuScene";
     public static string FightSceneName = "FightScene";
     public static string RailwaySceneName = "RailwayScene";
-
-    public static string DialogueRailwaySceneName = "RailwayScene";
-    public static string DialogueFightSceneName = "FightScene";
-    public static string DialogueIntroSceneName = "IntroScene";
 }
