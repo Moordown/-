@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8317bd717d4d428034e247873dbcfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainFace: {fileID: 21300000, guid: 4f4b3730cb977d144b41fcd8e14597c6, type: 3}
+  MainFace: {fileID: 21300000, guid: 65ab8d62512d02c429c2c2ff8dd26f96, type: 3}
   Name: "\u0426\u044B\u0433\u0430\u043D"
