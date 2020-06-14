@@ -11,4 +11,8 @@ public static class Config
     public static string MenuSceneName = "MenuScene";
     public static string FightSceneName = "FightScene";
     public static string RailwaySceneName = "RailwayScene";
+
+    public static string DialogueRailwaySceneName = "RailwayScene";
+    public static string DialogueFightSceneName = "FightScene";
+    public static string DialogueIntroSceneName = "IntroScene";
 }
