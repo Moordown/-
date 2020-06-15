@@ -7,7 +7,7 @@ public class StartDialogueByName : Triggerable
     public Triggerable[] deactivateObjects;
     private DialogueManager _dialogueManager;
     
-    void Start()
+    void Awake()
     {
         _dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
     }

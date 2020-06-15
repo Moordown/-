@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-public class Spawner : Triggerable
+public class Spawner : MonoBehaviour, ILogicController
 {
     public GameObject spawn;
     public int startAmount = 1;
@@ -19,7 +20,7 @@ public class Spawner : Triggerable
 
     public void Start()
     {
-        TrainLevelManager.RoundComplete += ResetRound;
+        TrainLogicController.RoundComplete += ResetRound;
         _getAmount = 0;
         for (var i = 0; i < _maxSpawned; i++)
         {
@@ -34,12 +35,19 @@ public class Spawner : Triggerable
         ResetRound();
     }
 
+    private IEnumerator spawnCoroutine;
     private void ResetRound()
     {
         spawnsDead = false;
         spawned = 0;
         _getAmount = Math.Min(_maxSpawned, startAmount);
-        StartCoroutine(SpawnObjects());
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine);
+            spawnCoroutine = null;
+        }
+        spawnCoroutine = SpawnObjects();
+        StartCoroutine(spawnCoroutine);
     }
 
     void Update()
@@ -52,11 +60,10 @@ public class Spawner : Triggerable
     
     private IEnumerator SpawnObjects()
     {
-        for (var i = 0; i < _getAmount; i++)
+        for (var i = spawned; i < _getAmount; i++)
         {
             spawned++;
             Debug.Log($"spawn object: {i+1} {Random.value}");
-            // _spawnObjects[i].transform.position = transform.position;
             _spawnObjects[i].SetActive(true);
             _spawnObjects[i].GetComponent<Collider>().enabled = true;
             _spawnObjects[i].GetComponent<EnemyHealth>().currentHealth =
@@ -65,7 +72,20 @@ public class Spawner : Triggerable
         }
     }
 
-    public override void Trigger(TriggerAction action)
+    public void StopLogic()
     {
+        if (spawnCoroutine != null)
+            StopCoroutine(spawnCoroutine);
+        spawnCoroutine = null;
+        for (var i = 0; i < spawned; i++)
+            _spawnObjects[i].GetComponent<NavMeshAgent>().enabled = false; 
+    }
+
+    public void StartLogic()
+    {
+        spawnCoroutine = SpawnObjects();
+        StartCoroutine(spawnCoroutine);
+        for (var i = 0; i < spawned; i++)
+            _spawnObjects[i].GetComponent<NavMeshAgent>().enabled = true; 
     }
 }

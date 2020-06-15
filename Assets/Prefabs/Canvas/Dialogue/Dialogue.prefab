@@ -51,8 +51,10 @@ MonoBehaviour:
   - {fileID: 5972280718046995002, guid: b4b30c02e914ee445a773bd2fdde058c, type: 3}
   - {fileID: 5113240736712223462, guid: e6cc228c639b5034cb7bf9ef07ea5bde, type: 3}
   - {fileID: 1162994915644507848, guid: 5e54dd3eb2700ab4ab343e2f257fee01, type: 3}
+  - {fileID: 3904404672460299953, guid: edf6c1cec4d63f34eb3be8ef4ea39872, type: 3}
+  - {fileID: 1165531953422386656, guid: 333dd1603678c834faed08cc7f5e34ba, type: 3}
   DialogueLevelManager: {fileID: 4200394415562943973}
-  LevelManager: {fileID: 0}
+  logicController: {fileID: 0}
   Order: []
   CurrentDialogueName: intro
   CurrentDialogueNumber: 0
@@ -355,7 +357,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1000, y: 250}
-  m_SizeDelta: {x: 840, y: 1344}
+  m_SizeDelta: {x: 1000, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4200394415458606168
 CanvasRenderer:
@@ -547,7 +549,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1000, y: 250}
-  m_SizeDelta: {x: 840, y: 1344}
+  m_SizeDelta: {x: 1000, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4200394415793838437
 CanvasRenderer:

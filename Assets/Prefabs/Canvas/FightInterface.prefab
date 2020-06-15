@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 1231004664050848039}
   - component: {fileID: 4862127271146600279}
   - component: {fileID: 5750909390033040882}
+  - component: {fileID: 5469891914073023250}
   m_Layer: 5
   m_Name: FightInterface
   m_TagString: Untagged
@@ -259,6 +260,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5469891914073023250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7633270419160714053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf48b4f620b672146995163ca26bb7d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Time: {fileID: 8133466506117505917}
 --- !u!1 &8133466506117505917
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,12 +732,12 @@ PrefabInstance:
     - target: {fileID: 2986923430430552750, guid: 5018313e78cb2524daadb045cc5a85ff,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 2986923430430552750, guid: 5018313e78cb2524daadb045cc5a85ff,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 400
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 2986923430430552750, guid: 5018313e78cb2524daadb045cc5a85ff,
         type: 3}

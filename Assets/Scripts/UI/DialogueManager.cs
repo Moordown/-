@@ -10,7 +10,7 @@ public class DialogueManager : Triggerable
     public String SceneName;
     public DialogueCharacter[] Characters;
     public DialogueLevelManager DialogueLevelManager;
-    public LevelManager LevelManager;
+    public LogicController logicController;
     public string[] Order;
     public string CurrentDialogueName;
     public int CurrentDialogueNumber;
@@ -38,6 +38,11 @@ public class DialogueManager : Triggerable
         if (DialogueIsActive)
         {
             var dialogue = DialogueLevelManager.DialogueSystem[SceneName][CurrentDialogueName];
+            // Debug.Log($"Dialog is active: {SceneName} {CurrentDialogueName} {CurrentDialogueNumber}");
+            // Debug.Log($"{string.Join("|", DialogueLevelManager.DialogueSystem.Keys)}");
+            // Debug.Log($"{string.Join("|", DialogueLevelManager.DialogueSystem[SceneName].Keys)}");
+            // Debug.Log($"{string.Join("|", DialogueLevelManager.DialogueSystem[SceneName][CurrentDialogueName].Select(s => s.name))}");
+
             if (Input.GetKeyUp(KeyCode.Space))
                 CurrentDialogueNumber++;
             if (CurrentDialogueNumber < dialogue.Length)
@@ -46,7 +51,7 @@ public class DialogueManager : Triggerable
             {
                 ClearDialogue();
                 DialogueIsActive = false;
-                LevelManager.StartLogic();
+                logicController.StartLogic();
                 if (invocationObject != null)
                 {
                     invocationObject.TriggerCallback();
@@ -98,12 +103,12 @@ public class DialogueManager : Triggerable
         Debug.Log($"{action} {DialogueIsActive} {CurrentDialogueName}");
         if (action == TriggerAction.Activate && !DialogueIsActive)
         {
-            LevelManager.StopLogic();
+            logicController.StopLogic();
             DialogueIsActive = true;
         }
         else if (action == TriggerAction.Deactivate && DialogueIsActive)
         {
-            LevelManager.StartLogic();
+            logicController.StartLogic();
             DialogueIsActive = false;
         }
     }

@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private int attackType;
 
-    private Vector3 direciton;
+    private Vector3 direciton = Vector3.one * 1000;
 
     public bool ActiveOnAwake = false;
 
@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
     public static string runName = "isRunning";
     private Rigidbody _playerRigidbody;
     private PlayerHealth _playerHealth;
-    private AttackAnimationState state;
+    private AttackAnimationState state = AttackAnimationState.None;
 
     void Start()
     {
@@ -47,14 +47,13 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         gameObject.SetActive(ActiveOnAwake);
-        state = AttackAnimationState.None;
         _playerHealth = player.gameObject.GetComponent<PlayerHealth>();
         _playerRigidbody = player.gameObject.GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        Debug.Log(state);
+        if (!agent.enabled) return;
         if (!animator.GetBool(deadName))
         {
             direciton = player.position - transform.position;
@@ -80,7 +79,6 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log($"{state} {attackType}");
         if (!animator.GetBool(deadName))
         {
             if (direciton.magnitude > 3f && state == AttackAnimationState.None)
@@ -91,6 +89,7 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
+                Debug.Log($"Animation cycle: {state}");
                 switch (state)
                 {
                     case AttackAnimationState.None:
@@ -118,6 +117,7 @@ public class EnemyController : MonoBehaviour
                                     AttackImpulse[attackType - 1], transform.position,
                                     6.0f, 4.0f, ForceMode.VelocityChange);
                                 _playerHealth.ApplyDamage(AttackDamage[attackType - 1]);
+                                Debug.Log("Apply damage");
                             }
                         }
 
