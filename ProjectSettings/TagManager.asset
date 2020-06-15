@@ -7,6 +7,7 @@ TagManager:
   - bullet
   - Spawner
   - non-coliding
+  - DialogueManager
   layers:
   - Default
   - TransparentFX

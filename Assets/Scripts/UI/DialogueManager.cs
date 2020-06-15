@@ -5,11 +5,12 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : Triggerable
+public class DialogueManager : Triggerable
 {
     public String SceneName;
     public DialogueCharacter[] Characters;
     public DialogueLevelManager DialogueLevelManager;
+    public LevelManager LevelManager;
     public string[] Order;
     public string CurrentDialogueName;
     public int CurrentDialogueNumber;
@@ -45,9 +46,21 @@ public class UIManager : Triggerable
             {
                 ClearDialogue();
                 DialogueIsActive = false;
-                DialogueLevelManager.StartLogic();
+                LevelManager.StartLogic();
+                if (invocationObject != null)
+                {
+                    invocationObject.TriggerCallback();
+                    invocationObject = null;
+                }
             }
         }
+    }
+
+    private StartDialogueByName invocationObject;
+    public void TriggerFrom(TriggerAction action, StartDialogueByName gameObject)
+    {
+        invocationObject = gameObject;
+        Trigger(action);
     }
 
     void SetCharacter(DialogueLevelManager.DialogueElement dialogueElement)
@@ -82,17 +95,16 @@ public class UIManager : Triggerable
 
     public override void Trigger(TriggerAction action)
     {
+        Debug.Log($"{action} {DialogueIsActive} {CurrentDialogueName}");
         if (action == TriggerAction.Activate && !DialogueIsActive)
         {
-            DialogueLevelManager.StopLogic();
+            LevelManager.StopLogic();
             DialogueIsActive = true;
-            Debug.Log("Start dialogue");
         }
         else if (action == TriggerAction.Deactivate && DialogueIsActive)
         {
-            DialogueLevelManager.StartLogic();
+            LevelManager.StartLogic();
             DialogueIsActive = false;
-            Debug.Log("End dialogue");
         }
     }
 }

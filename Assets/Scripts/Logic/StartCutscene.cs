@@ -17,10 +17,8 @@ public class StartCutscene : SceneLoader
     
     public GameObject FightInterface;
 
-    public void OnCollisionEnter(Collision other)
+    void Start()
     {
-        Debug.Log($"Enter to startCutscene: {other.gameObject.name} {other.gameObject.CompareTag("Player")}");
-        if (other.gameObject != Player) return;
         Run(NewSceneName);
     }
 

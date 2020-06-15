@@ -6,29 +6,34 @@ using UnityEngine.UI;
 public class RailwayLevelManager : LevelManager
 {
     public AudioClip playerDeadSound;
-    public GameObject panel;
-    public GameObject FightInterface;
+    public GameObject notificationPanel;
+    public GameObject fightInterface;
+    public StartTimer timer;
 
     public CharacterMovement characterMovement;
     public MouseLook mouseLock;
     
-    public PlayerHealth PlayerHealth;
+    private PlayerHealth playerHealth;
+    private GameObject player; 
     private AudioSource source;
     private Text panelText;
-    void Start()
+    void Awake()
     {
         source = GetComponent<AudioSource>();
-        panelText = panel.GetComponentInChildren<Text>();
+        notificationPanel.SetActive(false);
+        player = GameObject.FindWithTag("Player");
+        playerHealth = player.GetComponent<PlayerHealth>();
+        panelText = notificationPanel.GetComponentInChildren<Text>();
     }
 
     private bool isPlayerDead;
     void Update()
     {
-        if (PlayerHealth.health <= 0)
+        if (playerHealth.health <= 0)
         {
             if (Input.GetButton("Fire2"))
             {
-                FightInterface.SetActive(false);
+                fightInterface.SetActive(false);
                 StartLoading(Config.MenuSceneName);
             }
             else
@@ -36,13 +41,26 @@ public class RailwayLevelManager : LevelManager
                 if (!isPlayerDead)
                     source.PlayOneShot(playerDeadSound);
                 isPlayerDead = true;
-                panel.SetActive(true);
-                PlayerHealth.SetDangerEffect();
+                notificationPanel.SetActive(true);
+                playerHealth.SetDangerEffect();
 
-                panelText.text = $"Вы умерли из-за того что упали с большой высоты, лол (:";
+                panelText.text = $"Упадешь и не поймают...";
                 characterMovement.enabled = false;
                 mouseLock.enabled = false;
             }
         }
+    }
+
+    public override void StartLogic() => SetEnabled(true);
+
+    public override void StopLogic() => SetEnabled(false);
+
+    void SetEnabled(bool value)
+    {
+        fightInterface.SetActive(value);
+        timer.enabled = value;
+        player.GetComponent<PlayerHealth>().enabled = value;
+        player.GetComponent<CharacterMovement>().enabled = value;
+        player.GetComponentInChildren<MouseLook>().enabled = value;
     }
 }

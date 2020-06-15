@@ -13,15 +13,16 @@ public enum AttackAnimationState
     None
 }
 
-[RequireComponent(typeof(NavMeshObstacle))]
+[RequireComponent(typeof(NavMeshAgent))]
+// [RequireComponent(typeof(NavMeshObstacle))]
 [RequireComponent(typeof(Animator))]
 public class EnemyController : MonoBehaviour
 {
     public int AttackRange = 3;
-    
+
     public int[] AttackDamage;
     public float[] AttackImpulse;
-    
+
     public FightJudger Judger;
 
     private NavMeshAgent agent;
@@ -66,7 +67,9 @@ public class EnemyController : MonoBehaviour
             agent.isStopped = false;
             agent.SetDestination(player.position);
             if (direciton.magnitude > 2f)
+            {
                 transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+            }
         }
         else
         {
@@ -77,11 +80,14 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.Log($"{state} {attackType}");
         if (!animator.GetBool(deadName))
         {
             if (direciton.magnitude > 3f && state == AttackAnimationState.None)
             {
                 animator.SetBool(runName, true);
+                attackType = 0;
+                animator.SetInteger(attackName, attackType);
             }
             else
             {
@@ -97,7 +103,7 @@ public class EnemyController : MonoBehaviour
                         // TODO: эта тупая анимация может потом по второму кругу пойти, или стейтмашина
                         // TODO: рассинхронизируется с тем, что мы показываем.
                         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.1f
-                           && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.45f)
+                            && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.45f)
                             state = AttackAnimationState.Force;
                         else if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.45f)
                             state = AttackAnimationState.None;

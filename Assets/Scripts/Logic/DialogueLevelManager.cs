@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class DialogueLevelManager : LevelManager
+public class DialogueLevelManager : MonoBehaviour
 {
     public const string DialogueRailwaySceneName = "RailwayScene";
     public const string DialogueFightSceneName = "FightScene";
@@ -29,7 +29,7 @@ public class DialogueLevelManager : LevelManager
         Dictionary<string, Dictionary<string, DialogueElement[]>> DialogueSystem =
             new Dictionary<string, Dictionary<string, DialogueElement[]>>();
 
-    public UIManager UiManager;
+    public DialogueManager dialogueManager;
     public int UIManagerDialogue = -1;
 
     void Start()
@@ -48,10 +48,9 @@ public class DialogueLevelManager : LevelManager
             var content = File.ReadAllText(fileInfo.FullName);
             var dialogues = JsonUtility.FromJson<Dialogue>(content);
             dialoguesInScene[dialogueName] = dialogues.dialogue;
-            // Debug.Log($"{sceneName} {dialogueName}");
         }
 
-        UiManager.Trigger(TriggerAction.Activate);
+        dialogueManager.Trigger(TriggerAction.Activate);
     }
 
     [Serializable]
@@ -65,16 +64,5 @@ public class DialogueLevelManager : LevelManager
     {
         public string name;
         public string text;
-    }
-
-    public override void StartLogic()
-    {
-        Debug.Log($"StartLogic: {UIManagerDialogue}");
-        UIManagerDialogue++;
-        if (UIManagerDialogue < UiManager.Order.Length)
-        {
-            UiManager.CurrentDialogueName = UiManager.Order[UIManagerDialogue];
-            UiManager.Trigger(TriggerAction.Activate);
-        }
     }
 }
