@@ -75,11 +75,11 @@ public class DialogueManager : Triggerable
             RightImage.gameObject.SetActive(false);
             LeftImage.gameObject.SetActive(true);
             LeftImage.sprite = _characters[dialogueElement.name].MainFace;
-            LeftImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            // LeftImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
         else
         {
-            LeftImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            // LeftImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
             LeftImage.gameObject.SetActive(false);
             RightImage.gameObject.SetActive(true);
             RightImage.sprite = _characters[dialogueElement.name].MainFace;
