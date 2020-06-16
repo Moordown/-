@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6464371372284993137}
   - component: {fileID: 5894638215795227955}
   - component: {fileID: 5454608006781212768}
+  - component: {fileID: 8818983730439994782}
   m_Layer: 12
   m_Name: carriage
   m_TagString: Untagged
@@ -258,6 +259,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PushVector: {x: -6.25, y: 0, z: 0}
+--- !u!114 &8818983730439994782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80218571572066186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd54f774b0d143d68827499d07a5f911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreCollisionObjects:
+  - {fileID: 8296172667854610490, guid: ad57e1d14d9e63449b9c15da3b23b671, type: 3}
+  - {fileID: 7895716413395577686, guid: 5df1a87a7d2a0804c82a4e451378b738, type: 3}
 --- !u!1 &240294409851838864
 GameObject:
   m_ObjectHideFlags: 0
