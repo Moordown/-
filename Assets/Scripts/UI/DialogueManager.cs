@@ -16,6 +16,7 @@ public class DialogueManager : Triggerable
     public int CurrentDialogueNumber;
     public bool DialogueIsActive;
 
+    public Image backgoundImage;
     public Image LeftImage;
     public Image RightImage;
     public Text CharacterName;
@@ -38,26 +39,27 @@ public class DialogueManager : Triggerable
         if (DialogueIsActive)
         {
             var dialogue = DialogueLevelManager.DialogueSystem[SceneName][CurrentDialogueName];
-            // Debug.Log($"Dialog is active: {SceneName} {CurrentDialogueName} {CurrentDialogueNumber}");
-            // Debug.Log($"{string.Join("|", DialogueLevelManager.DialogueSystem.Keys)}");
-            // Debug.Log($"{string.Join("|", DialogueLevelManager.DialogueSystem[SceneName].Keys)}");
-            // Debug.Log($"{string.Join("|", DialogueLevelManager.DialogueSystem[SceneName][CurrentDialogueName].Select(s => s.name))}");
-
             if (Input.GetKeyUp(KeyCode.Space))
                 CurrentDialogueNumber++;
-            if (CurrentDialogueNumber < dialogue.Length)
+            else if (Input.GetKeyUp(KeyCode.Escape))
+                EndDialog();
+            else if (CurrentDialogueNumber < dialogue.Length)
                 SetCharacter(dialogue[CurrentDialogueNumber]);
             else
-            {
-                ClearDialogue();
-                DialogueIsActive = false;
-                logicController.StartLogic();
-                if (invocationObject != null)
-                {
-                    invocationObject.TriggerCallback();
-                    invocationObject = null;
-                }
-            }
+                EndDialog();
+        }
+    }
+
+    private void EndDialog()
+    {
+        Debug.Log($"Dialogue ends: {invocationObject}");
+        ClearDialogue();
+        DialogueIsActive = false;
+        logicController.StartLogic();
+        if (invocationObject != null)
+        {
+            invocationObject.TriggerCallback();
+            invocationObject = null;
         }
     }
 
@@ -70,6 +72,16 @@ public class DialogueManager : Triggerable
 
     void SetCharacter(DialogueLevelManager.DialogueElement dialogueElement)
     {
+        if (dialogueElement.name.StartsWith(">") || dialogueElement.name.StartsWith("<"))
+        {
+            SetAction(dialogueElement);
+            return;
+        }
+        
+        
+        CharacterName.gameObject.SetActive(true);
+        CharacterText.gameObject.SetActive(true);
+        
         if (CurrentDialogueNumber % 2 == 0)
         {
             RightImage.gameObject.SetActive(false);
@@ -87,6 +99,26 @@ public class DialogueManager : Triggerable
 
         CharacterName.text = dialogueElement.name;
         CharacterText.text = dialogueElement.text;
+    }
+
+    void SetAction(DialogueLevelManager.DialogueElement dialogueElement)
+    {
+        if (dialogueElement.name == ">background")
+        {
+            LeftImage.gameObject.SetActive(false);
+            RightImage.gameObject.SetActive(false);
+            CharacterName.gameObject.SetActive(false);
+            CharacterText.gameObject.SetActive(false);
+            backgoundImage.sprite = _characters[dialogueElement.text].MainFace;
+            var tempColor = backgoundImage.color;
+            tempColor.a = 1f;
+            backgoundImage.color = tempColor;
+        } else if (dialogueElement.name == "<background")
+        {
+            var tempColor = backgoundImage.color;
+            tempColor.a = 0f;
+            backgoundImage.color = tempColor;
+        }
     }
 
     void ClearDialogue()

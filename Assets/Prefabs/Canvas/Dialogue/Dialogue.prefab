@@ -53,12 +53,22 @@ MonoBehaviour:
   - {fileID: 1162994915644507848, guid: 5e54dd3eb2700ab4ab343e2f257fee01, type: 3}
   - {fileID: 3904404672460299953, guid: edf6c1cec4d63f34eb3be8ef4ea39872, type: 3}
   - {fileID: 1165531953422386656, guid: 333dd1603678c834faed08cc7f5e34ba, type: 3}
+  - {fileID: 6246961245127380121, guid: 4d1eb1d3ce22bcc489fd746126e1017d, type: 3}
+  - {fileID: 3680739784897782262, guid: 71ffc147a856a554da312451a452daba, type: 3}
+  - {fileID: 8388689159905662, guid: ec66640aca942bb45a3b0aff4b5e7314, type: 3}
+  - {fileID: 276972386374165376, guid: 076b2aae04caa334b9bcd29fa455c258, type: 3}
+  - {fileID: 3722505729665512767, guid: f9634f3c3ec974644afc6230c1865111, type: 3}
+  - {fileID: 3088172654233653422, guid: b731372ddf573004797bbc89b607a1e8, type: 3}
+  - {fileID: 8961100771223320280, guid: 71c8ffb242a66ca448f66976854731c0, type: 3}
+  - {fileID: 5247770392050199506, guid: 5f8c9050a1d847347980091804d5b43d, type: 3}
+  - {fileID: 3661725855831962525, guid: b5f46b4a986bc884391016eb9c93ffed, type: 3}
   DialogueLevelManager: {fileID: 4200394415562943973}
   logicController: {fileID: 0}
   Order: []
   CurrentDialogueName: intro
   CurrentDialogueNumber: 0
   DialogueIsActive: 0
+  backgoundImage: {fileID: 4200394415562418800}
   LeftImage: {fileID: 4200394415458606169}
   RightImage: {fileID: 4200394415793838436}
   CharacterName: {fileID: 4200394414690420443}
@@ -453,7 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

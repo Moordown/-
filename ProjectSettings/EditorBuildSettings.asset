@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RailwayStationScene.unity
     guid: 2fc52801d20ec3349b2154ad3963b63e
+  - enabled: 1
+    path: Assets/Scenes/IntroScene.unity
+    guid: aad8125fcb4cd074c9ed5bfd0ca8f7e6
   m_configObjects: {}

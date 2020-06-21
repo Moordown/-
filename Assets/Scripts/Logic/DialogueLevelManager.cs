@@ -29,6 +29,13 @@ public class DialogueLevelManager : MonoBehaviour
                 "intro",
                 "end",
             }
+        },
+        
+        {
+            DialogueIntroSceneName, new[]
+            {
+                "intro"
+            }
         }
     };
 

@@ -789,6 +789,11 @@ PrefabInstance:
       propertyPath: ActiveOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4127795576617601078, guid: ad57e1d14d9e63449b9c15da3b23b671,
+        type: 3}
+      propertyPath: Health
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 4127795576617601079, guid: ad57e1d14d9e63449b9c15da3b23b671,
         type: 3}
       propertyPath: m_Speed
@@ -1726,7 +1731,7 @@ PrefabInstance:
     - target: {fileID: 7107006626565030195, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
       propertyPath: MaxRounds
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7107006626565030195, guid: a06d8063be2200546bbfe67605749648,
         type: 3}
